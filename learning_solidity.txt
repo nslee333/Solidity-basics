@@ -1,3 +1,17 @@
+
+
+// This is a youtube tutorial by Dapp University I'll link it down below.
+// The companion code is MyContract.sol.
+
+// https://www.youtube.com/watch?v=ipwxYa-F1uY&t=44s
+
+
+
+// -----------------------------------
+
+// Introduction
+
+
 // Solidity is a contract-oriented, high level programming language for implementing smart contracts.
 // It is is influenced by C++, Python and Javascript.
 
@@ -24,6 +38,11 @@
 // Its a microservice because it's more than just a class in an object-oriented system.
 // It's publically accessible. 
 
+// ----------------------------------------
+
+
+// function get();
+
 // When we write the string value, we are actually writing data to the Blockchain.
 // The Variable in the string is stored in this smart contract.
 // It's different from an local variable inside of a function, that would only be local to that function scope.
@@ -36,9 +55,31 @@
 // the public keyword makes the function visible and usable by anyone who
 // has access to the smart contract on the blockchain not just inside this contract.
 
-// 
+// Returns string character, this tells our function that we will always return a 
+// string datatype.
 
+// The value type is declared as a string in the function 
 
+// ----------------------------------------------------
+
+// function set();
+
+// One thing to note is that on this second function, we used an underscored
+// '_value' parameter so that we don't get the 'value' from the first function mixed 
+// in the contract.
+
+// The string 'value' declaration at the top of the contract is the state variable.
+// The 'value', is a state variable, which is being written to and stored on the Blockchain.
+
+// Solidity knows that the '_value' is a local variable because I passed it in and prepended
+// and understore to the beginning of the variable.
+
+// Also note that we declared the data type of function argument we need that
+// inside solidity because it needs to know the type of the data that is getting
+// passed in.
+
+// Okay so now, we have two functions in this smart contract. 
+// One to read the value and a function to set the value, (Or write the value if you prefer.).
 
 
 
