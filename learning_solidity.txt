@@ -21,8 +21,8 @@
 // It's all public.
 
 
-// Its a microservice bececause it's more than just a class in an object-oriented system.
-// It's publically acessible. 
+// Its a microservice because it's more than just a class in an object-oriented system.
+// It's publically accessible. 
 
 // When we write the string value, we are actually writing data to the Blockchain.
 // The Variable in the string is stored in this smart contract.
@@ -30,7 +30,13 @@
 
 // This value is stored on the blockchain.
 
-// The public keyword on the function is used to
+// Setting the visibility of this function, setting the function to public
+// Expands the visibility or the scope of the function
+
+// the public keyword makes the function visible and usable by anyone who
+// has access to the smart contract on the blockchain not just inside this contract.
+
+// 
 
 
 
