@@ -1,0 +1,41 @@
+Introduction
+
+This is the second smart contract for this tutorial:
+https://www.youtube.com/watch?v=ipwxYa-F1uY&t=44s
+
+----------------------------------------------------------
+
+The first thing we're going to do in this video is that we're
+going to update the contract code that we wrote before to to the latest
+version of solidity.
+
+Solidity 0.5.1.
+
+Okay so we can read the error in remix IDE, and it gives us two
+type errors.
+
+TypeError: data location must be "memory" for return parameter in function but none was given.
+
+The error is noted at line 19 and line 25.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
