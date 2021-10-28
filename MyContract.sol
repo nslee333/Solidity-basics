@@ -2,7 +2,16 @@ pragma solidity ^0.4.24;
 
 
 contract myContract {
-    string value; // This is the state variable.
+    
+    // This is the state variable.
+    string value; 
+
+
+    // This is the constructor function.
+    constructor() public {
+        value = "myValue";
+    }
+
 
 
     // A function to read the value.

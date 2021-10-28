@@ -72,7 +72,7 @@
 // The 'value', is a state variable, which is being written to and stored on the Blockchain.
 
 // Solidity knows that the '_value' is a local variable because I passed it in and prepended
-// and understore to the beginning of the variable.
+// and underscore to the beginning of the variable.
 
 // Also note that we declared the data type of function argument we need that
 // inside solidity because it needs to know the type of the data that is getting
@@ -81,6 +81,71 @@
 // Okay so now, we have two functions in this smart contract. 
 // One to read the value and a function to set the value, (Or write the value if you prefer.).
 
+//-------------------------------------------------------
+
+// Constructor function.
+
+// The next thing we're going to learn is how to set this value whenever we deploy this smart contract 
+// Or whenever its generated for the first time. 
+
+// We're going to do this with a constructor function.
+
+// So if you're familiar with other programming languages where you might write classes
+// you might be familiar with a constructor function.
+
+// A constructor function is basically a function that's called whenever this contract 
+// is instantiated 
+
+// <><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><><><><><><><><><><><><><><>
+
+// Personal note: I wasn't sure what instantiated meant at this point, so I went off to look it up.
+// The link to the Wikipedia page is here: https://en.wikipedia.org/wiki/Instance_(computer_science).
+
+// I took the definition down and an example of what instantiated meant, I'll post what I wrote down below.
+
+Instance (Computer science)
+	- In a computer system, anytime a new context is created based on some model, it is said that the model has been instantiated. 
+	- In practice, this instance usually has a data structure in common with other instances, but the values stored in them are separate.
+
+ - For example.
+
+	- Lets say there is a class.
+	- Lets say its profiles on facebook,
+
+	- Two classes
+	- Nathan and Mark, 
+    
+    - well, the class is made based on a generic class (Facebook profile), they are the same class, 
+    - but the data and values inside of those classes are different.
+    
+    - Nathan and Mark are instances of the facebook "profile" class.
+    
+    - Whenever a new profile is made, the class 'profile' is instantiated. 
+
+// <><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><><><><><><><><><><><><><><>
+
+// So with the context of that definition, the constructor function is called
+// When the contract is instantiated or whenever the smart contract is created or deployed
+// to the blockchain.
+
+// In the newer versions of solidity we do that like this.
+
+// We can write code inside of this constructor that is called whenever this contract is created.
+
+// So in the constructor function we assigned the variable value to a camelCase variable name.
+
+
+// ------------------------------------------------------------------------
+
+// So this is a complete smart contract.
+
+// This smart contract: 
+
+// 1. sets this value whenever it's deployed so it will have some sort of default value.
+
+// 2. Then we'll have some function that will allow us to read that value from the blockchain.
+
+// 3. And it also has a function that allows us to create that value and write to the blockchain.
 
 
 
