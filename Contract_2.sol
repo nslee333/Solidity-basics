@@ -4,7 +4,7 @@ pragma solidity ^0.5.1;
 contract myContract {
     
     // This is the state variable.
-    string value; 
+    string public value; 
 
 
     // This is the constructor function.
@@ -13,15 +13,8 @@ contract myContract {
     }
 
 
-
-    // A function to read the value.
-    function getValue() public view returns(string) {
-        return value;
-    }
-
-
-    // A function to write the value.
-    function setValue(string _value) public {
+    // A function to write the value of the state variable.
+    function setValue(string memory _value) public {
         value = _value;
     }
 

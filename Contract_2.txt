@@ -18,6 +18,32 @@ TypeError: data location must be "memory" for return parameter in function but n
 
 The error is noted at line 19 and line 25.
 
+All we have to do to fix this error is to add memory to the return parameter.
+
+Using the Remix IDE, we compiled the contract and the error is fixed.
+
+Now we're going to get going on the main focus of this video, we're going to
+be covering the basic data types and data structures in Solidity.
+
+First thing we're going to go over is the different ways we can go over
+state variables.
+
+At the top of the contract we have the state variable 'string value'
+that we declared and set it and retrieved the values.
+
+Solidity has a shortcut where you don't even need the get function.
+
+You can basically read it for free.
+
+We're going to add the public keyword on the end of the state variable.
+
+The public keyword is declaring the visibility of the state variable.
+
+After compiling the code, and deploying it onto a blockchain we can see it on the remix
+IDE that you can read the code for free.
+
+
+
 
 
 
