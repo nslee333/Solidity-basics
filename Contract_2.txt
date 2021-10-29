@@ -42,6 +42,21 @@ The public keyword is declaring the visibility of the state variable.
 After compiling the code, and deploying it onto a blockchain we can see it on the remix
 IDE that you can read the code for free.
 
+We can also just add a default value, so let's look at this.
+
+We're going to delete the constructor function because we don't need it.
+
+We're also going to define the string value to 'myValue' inline on the state variable.
+
+We can also set the string value to constant to make the variable immutable.
+
+We'll define the variable as a constant inline on the state variable declaration.
+
+Now let's look at some different data types in Solidity.
+
+We updated the string to stringValue.
+
+Alright let's explore some different types, so we can have a Boolean value in Solidity.
 
 
 
