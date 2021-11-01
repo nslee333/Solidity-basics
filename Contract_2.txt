@@ -58,6 +58,21 @@ We updated the string to stringValue.
 
 Alright let's explore some different types, so we can have a Boolean value in Solidity.
 
+Booleans:
+
+Integers can be signed and unsigned.
+
+The difference between a int (Integer), and a uint (Unsigned Integer).
+
+Int can be signed.
+
+Uint can be unsigned.
+
+What does that mean? Well, a int can be signed, in other words, can be a negative
+number.
+
+An int can be -1. The negative sign is the "sign" in the signed or unsigned integer.
+
 
 
 
