@@ -93,6 +93,129 @@ contract.
 
 We'll be able to reference this to check the state of the contract.
 
+This allows us to set or reference the state of the contract in the code copied below.
+
+// ---------------------------------------------------------------------
+Raw code:
+
+contract myContract {
+    enum State{ Waiting, Ready, Active } 
+    State public State; 
+
+
+    constructor() public {
+        state = State.Waiting; 
+
+    }
+    
+    function activate() public {
+        state = State.Active; 
+
+    }
+
+    function isActive() public view returns(bool) {
+        return state == State.Active; 
+    } 
+}
+
+//------------------------------------------------------------------------------------------------------------
+
+Code explained:
+
+contract myContract {
+    enum State{ Waiting, Ready, Active }
+    
+     // Enum list of States of the smart contract.
+    
+    State public State; 
+    
+    // We'll be able to access this publicly with the getter.
+
+
+    constructor() public { 
+        
+        // When constructing the contract, we set the default state to Waiting below.
+        
+        state = State.Waiting; 
+        
+        // Sets the default State to Waiting.
+
+    }
+    
+    function activate() public { 
+        
+        // Function to activate the smart contract.
+
+        state = State.Active; 
+        
+        // Updates the State of the Smart Contract when this function is called.
+
+    }
+
+    function isActive() public view returns(bool) {
+        
+        function declaration, public visibility, (visible to anyone on the Blockchain.) ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+        
+        return state == State.Active; 
+        
+
+
+        // Note, since this list is enumerated, then this will return an index value of the State enum list.
+    } 
+    
+
+// So it will return 0 if the contract is Waiting.
+}
+
+Alright so now, we're going to explore structs.
+
+Structs is a way in Solidity to define our own data structures.
+
+This allows us to model our own sort of arbitrary data.
+
+We're going to have a Person Struct.
+
+This Struct(Person) is going to have several attributes such as.
+First name, Last Name both strings. 
+
+We can put these structs inside of Mappings and Arrays.
+
+In this, We've declared the data type Person inside the smart contract with a struct.
+thats going to have a first name and a last name.
+
+So lets create a function that can instantiate a new Person. Create a new one and 
+actually keep track of a bunch of these person structs inside of a people array.
+
+First let's create a Person[] array, we'll call it people, and we'll make it public so you can
+read it outside of the Smart Contract.
+
+It's a data type of this person.
+
+Person is a struct, and the Person[] Array contains different instances of the Person struct.
+
+It's stored with the 'people' State Variable.
+
+We're going to create a function for adding a person to the Person[] array.
+
+We're going to add it with a function, with the parameters for the instance for that person.
+
+So we'll pass into the function, the first name and last name of that person.
+
+Then we'll add that person into the Array with the people.push() method.
+
+This adds the person onto the end of the array.
+
+We'll declare the struct data type Person, and the first and last name of that person to add that person to the people array.
+
+String declares the data type.
+
+
+The thing is with the arrays in Solidity is that you can't read them.
+So we'll create a function for displaying the count of the array, and since its indexed, we can read the contents
+of that instantiation.
+
+We'll add uint256 public peopleCount, and inside the addPerson function.
+We'll increase the peopleCount by an increment of one.
 
 
 
