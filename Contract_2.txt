@@ -75,6 +75,18 @@ An int can be -1. The negative sign is the "sign" in the signed or unsigned inte
 
 
 
+string public stringValue = "myString";
+    bool public myBool = true;
+    int public myInt = -1;
+    uint8 public myUint8 = 8;
+    uint256 public myUint256 = 99999;
+
+So that is some of the basic data types.
+
+Enum - Enum means enumerated list and it will allow us to keep
+a set
+
+
 
 
 
