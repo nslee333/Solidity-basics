@@ -84,7 +84,16 @@ string public stringValue = "myString";
 So that is some of the basic data types.
 
 Enum - Enum means enumerated list and it will allow us to keep
-a set
+track of a set list of things in our contract. We'll take a look on what this means.
+
+Added enum State { Waiting, Ready, Active}. 
+
+This allows us to keep a list of these three states of the contract inside the smart
+contract.
+
+We'll be able to reference this to check the state of the contract.
+
+
 
 
 
