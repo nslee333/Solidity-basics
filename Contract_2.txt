@@ -217,8 +217,65 @@ of that instantiation.
 We'll add uint256 public peopleCount, and inside the addPerson function.
 We'll increase the peopleCount by an increment of one.
 
+//-----------------------------------------------------------------
+
+contract myContract {
+    
+    Person[] public people; 
+    // People is a state variable here, and it's public so we can read it ouside of the smart contract.
+
+    uint256 public peopleCount;
+
+    struct Person {
+        string _firstName;
+        string _lastName;
+
+    }
+
+    function addPerson(string memory _firstName, string memory _lastName) public {
+        people.push(Person(_firstName, _lastName));
+        people.Count += 1;
+    }
+}
+
+//----------------------------------------------------------------
 
 
+Alright we're going to do the same thing with this code, but instead of using an Array.
+We're going to use a mapping.
+
+So what is a Mapping? Mapping is an associative array.
+
+(https://brilliant.org/wiki/associative-arrays/)
+
+(An Associative Array, also called maps or dictionaries, is an abstract data type
+that can hold data in (key, value) pairs. )
+
+A mapping is essentially a key/value data type.
+
+mapping(uint => Person) public people;
+
+
+Uint is the key, and the Person is the value.
+
+mapping is an associative array that is structured with a key value pair.
+
+The key is going to be an unsigned integer, We'll treat this like an id. 
+
+It will be our Database lookup where we have an ID and a record.
+
+When we call up the ID we'll call up a record or in this case a struct.
+
+It will be public with the variable name people.
+
+In this mapping, it is based on 1 based indexing, so our first entry will be index of 1.
+
+We'll dive a little more into structs.
+
+We need to keep count of peopleCount because there's no way to know the size of the mapping
+in Solidity. 
+
+Basically any key
 
 
 

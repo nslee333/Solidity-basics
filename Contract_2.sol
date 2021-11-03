@@ -2,20 +2,20 @@ pragma solidity ^0.5.1;
 
 
 contract myContract {
+    uint256 public peopleCount = 0;
     
-    Person[] public people; 
-    // People is a state variable here, and it's public so we can read it ouside of the smart contract.
+    mapping(uint => Person) public people; 
 
-    uint256 public peopleCount;
 
     struct Person {
+        uint _id;
         string _firstName;
         string _lastName;
-
     }
 
     function addPerson(string memory _firstName, string memory _lastName) public {
-        people.push(Person(_firstName, _lastName));
-        people.Count += 1;
+        peopleCount += 1;
+        people[peopleCount] = Person(peopleCount, _firstName, _lastName);
+
     }
 }
