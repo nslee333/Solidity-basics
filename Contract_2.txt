@@ -426,6 +426,44 @@ msg.sender keyword.
 Which when we compile and deploy the contract, the person who
 deploys it (msg.sender) gets set as the owner of the contract.
 
+So now we're going to work with Time in Solidity.
+
+So instead of the onlyOwner modifier where only the owner can 
+run the function, lets say, the function can only run after a
+certain amount of time has passed.
+
+So instead of onlyOwner we can say that this contract is only
+open at a certain time.
+
+So with this modifier, when the function is modified with this
+the function will only be called after we have have passed
+a certain time in history, and if it's before that specified
+time, then the function will not work, it will throw an error.
+
+So this is super useful when you're doing a crowd sale for An
+NFT or an ICO contract.
+
+So we need to set the openingTime. 
+
+Time stamps are expressed in seconds in Solidity.
+
+Seconds in what? Well its Epoch time, if you're not familiar 
+with that in Computer Science epoch is a specific time in the
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
