@@ -6,7 +6,8 @@ https://www.youtube.com/watch?v=ipwxYa-F1uY&t=44s
 ----------------------------------------------------------
 
 The first thing we're going to do in this video is that we're
-going to update the contract code that we wrote before to to the latest
+going to update the contract code that we wrote before to to the
+latest
 version of solidity.
 
 Solidity 0.5.1.
@@ -14,16 +15,20 @@ Solidity 0.5.1.
 Okay so we can read the error in remix IDE, and it gives us two
 type errors.
 
-TypeError: data location must be "memory" for return parameter in function but none was given.
+TypeError: data location must be "memory" for return parameter 
+in function but none was given.
 
 The error is noted at line 19 and line 25.
 
-All we have to do to fix this error is to add memory to the return parameter.
+All we have to do to fix this error is to add memory to the
+return parameter.
 
-Using the Remix IDE, we compiled the contract and the error is fixed.
+Using the Remix IDE, we compiled the contract and the error 
+is fixed.
 
-Now we're going to get going on the main focus of this video, we're going to
-be covering the basic data types and data structures in Solidity.
+Now we're going to get going on the main focus of this video, 
+we're going to be covering the basic data types and 
+data structures in Solidity.
 
 First thing we're going to go over is the different ways we can go over
 state variables.
@@ -275,8 +280,151 @@ We'll dive a little more into structs.
 We need to keep count of peopleCount because there's no way to know the size of the mapping
 in Solidity. 
 
-Basically any key
+Basically any key that doesn't have a value set for it it's going to turn a default value which would be
+an empty struct.
 
+So if we go into the deployed contract in Remix, and ask for index position 100 when we only added two people Then
+it will default value. 
+
+Since there is no way to see how many are in a mapping, its good to have a counter cache so we can see exactly how many
+entries are in the mapping.
+
+
+Copy of the code.
+
+contract myContract {
+    uint256 public peopleCount = 0;
+    
+    mapping(uint => Person) public people; 
+
+
+    struct Person {
+        uint _id;
+        string _firstName;
+        string _lastName;
+    }
+
+    function addPerson(string memory _firstName, string memory _lastName) public {
+        peopleCount += 1;
+        people[peopleCount] = Person(peopleCount, _firstName, _lastName);
+
+    }
+}
+
+
+Part 3 ----------------------------------------------------------------------------------------------------------------------------
+
+In this part we're going to use the same contract and go over the modifiers a bit more to help our understanding of the language.
+
+Public modifier.
+
+Public is a function that can be called - basically the public interface at the smart contract.
+
+Public modifier makes the function in the smart contract to be visible and available to anyone who has access to the blockchain.
+
+So now we're going to look at a private function or internal function.
+
+So the incrementCount() function is an example of an internal (or private) function,
+no one outside of the contract can use that function.
+
+This is a great example of visilbility and scope in Solidity.
+
+Let's talk about function modifiers.
+
+So modifiers are keywords that we can add to the function to change the way it behaves.
+
+We're going to look at an example.
+
+We're going to create our own custom modifier inside of this smart contract.
+So that only certain people can call this add person function.
+
+We're going to make this smart contract have an owner or an admin for it.
+
+We're going to modify the addPerson() function so that only the owner/admin can call this function.
+
+We're going to add the onlyOwner modifier on the end of the function whenever we want to restrict the 
+function usability to the ownerOnly.
+
+This onlyOwner modifier doesn't exist yet so let's make that.
+
+We added the address owner;
+
+the address keyword is another data type in solidity.
+
+We're just declaring it on line 8 and we're going to set it inside the constructor.
+
+Inside the modifier onlyOwner we're going to create the logic for this modifier.
+
+So how do we know who's calling the function? How can we build the logic to figure that out?
+
+Well Solidity hasa global keyword called MSG. 
+
+Which basically stands for the function metadata thats passed in.
+
+We're not going to pass in any meta data here it's going to be implied.
+
+We have access to msg.sender. 
+
+This is basically a special thing inside of solidity that tells us the account, or it's address.
+Or basically who called the function.
+
+And basically we can just say is this the owner?
+
+In this we compare the equality of the person who's calling 
+the function with the owner which we're going to define.
+
+If the function caller is not the owner we want to throw an error.
+
+We want to trigger an error if this person calling the function
+is not the owner.
+
+We basically want to revert the transaction.
+
+So in the onlyOwner modifier we're going to wrap the msg.sender 
+== owner in the require function.
+
+How the require function works is that if the arguments passed
+in are equal to true, then it allows it to run, and if it is
+false then the function is not allowed to run.
+
+In automotive terms, the onlyOwner modifier will essentially be
+the keychip inside of the ignition key that only allows the 
+start of the car (function in this case) when it is present.
+
+Or --
+function require() {
+    if (msg.sender == owner) {
+        return True;
+    } else
+        return false;
+}
+
+Whenever we use the require(ZZZZZZZZZZ) whatever the argument 
+has to be true.
+
+When the error is triggered it reverts the transaction (running
+the code), and keeps the person from paying the gas fees.
+
+Whenever the contract is deployed the constructor is run and 
+the msg.sender is actually the account that deploys the smart
+contract.
+
+And the msg.sender is going to be set to the owner state variable.
+
+That same owner address is the only address that will be allowed
+to call and use that function.
+
+Alright so I'm going to explain this in a way that makes sense to
+me. 
+
+The constructor function gets called whenever the contract is
+deployed.
+
+Inside the constructor() function, we set the owner to the
+msg.sender keyword.
+
+Which when we compile and deploy the contract, the person who
+deploys it (msg.sender) gets set as the owner of the contract.
 
 
 
