@@ -95,16 +95,13 @@ Storage:
 	- Inside and outside of the functions.
 	- They're also stored permanently - meaning that even though it doesn't matter if you're sending a transaction or executing a function or not doing anything at all, 
 	- The Ethereum Network will save your variable forever until the contract is removed.
-	
-	
-
-
-
-	- Permanent.
-	- State Variables.
+	- State Variables (or global variables)
 Memory
 	- Local.
 	- Temporary.
 	- Local Variables.
-	- Arguments.
+	- AKA variables in function bodies.
+	- After the function is performed, the variables assigned inside of the function will be removed from memory, making them temporary.
+	- The same rule applies to arguments, they are temporarily stored in memory under 'Memory', and will be removed from memory once the
+	- function execution is completed.
 
