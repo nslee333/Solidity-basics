@@ -447,7 +447,7 @@ So we need to set the openingTime.
 
 Time stamps are expressed in seconds in Solidity.
 
-Seconds in what? Well its Epoch time (AKAUNIX time), 
+Seconds in what? Well its Epoch time (AKA UNIX time), 
 if you're not familiar with that in Computer science.
 
 Epoch time is a system for describing a point in time.
@@ -531,19 +531,54 @@ Here's the explained code.
 
 pragma solidity ^0.5.1; 
 
-// 
+// Solidity version declaration.
 
 contract myContract {
+
+// contract declaration and contract name.
+
+
+
     uint256 public peopleCount = 0;
+
+    // Data type, visibility declaration, variable declaration, 
+    assignment, value and semi-colon to specify the end of the line.
+
+
+
     mapping(uint => Person) public people; 
+
+    // Data structure declaration, the key and value parameter names,
+    // visibility declaration, and variable name of the mapping.
+
+
+
 
     uint256 openingTime = 1636076813;
 
+    // Datatype delcaration, variable name the time, Epoch Timestamp.
 
-    modifier onlyWhileOpen() {
-        require(block.timestamp >== openingTime);
+
+    modifier onlyWhileOpen()
+
+    // Modifier (function) declaration, variable name, ().
+    
+    {
+        require(block.timestamp >= openingTime);
+
+        // Require function declaration, block.timestamp function call
+        // >=, openingTime state variable call.
+
+
         _;
+
+        // ???????????
+
     }
+
+
+
+
 
     struct Person {
         uint _id;
