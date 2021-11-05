@@ -5,11 +5,11 @@ contract myContract {
     uint256 public peopleCount = 0;
     mapping(uint => Person) public people; 
 
-    uint256 openingTime;
+    uint256 openingTime = 1636076813;
 
 
     modifier onlyWhileOpen() {
-        require(msg.sender == owner);
+        require(block.timestamp >== openingTime);
         _;
     }
 

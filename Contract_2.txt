@@ -447,8 +447,127 @@ So we need to set the openingTime.
 
 Time stamps are expressed in seconds in Solidity.
 
-Seconds in what? Well its Epoch time, if you're not familiar 
-with that in Computer Science epoch is a specific time in the
+Seconds in what? Well its Epoch time (AKAUNIX time), 
+if you're not familiar with that in Computer science.
+
+Epoch time is a system for describing a point in time.
+
+It is the number of seconds that have elapsed since the unix
+time epoch, excluding leap seconds. The unix epoch is 
+the 1st of january 1970 (an arbitrary date.) 
+
+Unix time is non-linear with a leap second having the same unix
+time as the second before it.
+
+Everyday is treated as if it contains 86,400 seconds.
+
+The difference between UTC and Unix Epoch time is that Unix
+time treats leap seconds differently than UTC, so it is not the same.
+
+So, with the Data type uint256 we can set the openingTime to Epoch time
+and the contract opens for use at that time.
+
+But what about setting the opening time to the current time, instead of
+epoch time? Well, the best way to do that is to use the Block's time 
+stamp.
+
+So with the global function in solidity Block.timestamp we can achieve
+that openingTime set to the curren time. 
+
+Basically we're going to modify this modifier and say that you can use
+this addPerson function after this Epoch timestamp.
+
+And if the timestamp is before that timestamp, then the function will 
+not run.
+
+Here's a copy of the Smart Contract after the tutorial ended.
+
+
+
+pragma solidity ^0.5.1; 
+
+
+contract myContract {
+    uint256 public peopleCount = 0;
+    mapping(uint => Person) public people; 
+
+    uint256 openingTime = 1636076813;
+
+
+    modifier onlyWhileOpen() {
+        require(block.timestamp >== openingTime);
+        _;
+    }
+
+    struct Person {
+        uint _id;
+        string _firstName;
+        string _lastName;
+    }
+
+    function addPerson(
+    string memory _firstName,
+    string memory _lastName
+    ) 
+        public 
+        onlyWhileOpen 
+    {
+        incrementCount();
+        people[peopleCount] = Person(peopleCount, _firstName, _lastName);
+    }
+
+    function incrementCount() internal {
+        peopleCount += 1;
+    }
+}
+
+//----------------------------------------------------------------------
+
+
+Here's the explained code.
+
+
+
+
+pragma solidity ^0.5.1; 
+
+// 
+
+contract myContract {
+    uint256 public peopleCount = 0;
+    mapping(uint => Person) public people; 
+
+    uint256 openingTime = 1636076813;
+
+
+    modifier onlyWhileOpen() {
+        require(block.timestamp >== openingTime);
+        _;
+    }
+
+    struct Person {
+        uint _id;
+        string _firstName;
+        string _lastName;
+    }
+
+    function addPerson(
+    string memory _firstName,
+    string memory _lastName
+    ) 
+        public 
+        onlyWhileOpen 
+    {
+        incrementCount();
+        people[peopleCount] = Person(peopleCount, _firstName, _lastName);
+    }
+
+    function incrementCount() internal {
+        peopleCount += 1;
+    }
+}
+
+
 
 
 
