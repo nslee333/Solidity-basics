@@ -580,14 +580,31 @@ contract myContract {
 
 
 
-    struct Person {
+    struct Person
+    // Data Structure declaration, DS Variable name.
+    
+    {
         uint _id;
+        // Data Type Declaration, attribute variable name.
+
         string _firstName;
+
+        // Data Type Declaration, attribute variable name.
+
         string _lastName;
+
+        // Data type declaration, attribute variable name.
     }
 
-    function addPerson(
+    function addPerson
+    
+    // function declaration, function variable name.
+
+    (
     string memory _firstName,
+    
+    // data type declaration, 
+    
     string memory _lastName
     ) 
         public 
@@ -602,6 +619,15 @@ contract myContract {
     }
 }
 
+Alright here's a personal note for myself.
+
+I'm going to explain how the variables are stored in Solidity.
+
+There are three "places" where the EVM stores variables.
+
+STORAGE, MEMORY AND CALLDATA.
+
+You might see them in the declaration of some variables.
 
 
 
