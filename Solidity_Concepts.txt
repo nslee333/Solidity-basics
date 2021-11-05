@@ -6,9 +6,11 @@ Data Location in Solidity.
 There are three "Locations" in which the EVM stores variables: 
 	- STORAGE, MEMORY AND CALLDATA.
 
- You might have seen them in the declaration of some variables, but, you've probably noticed that they are usually missing.
+ You might have seen them in the declaration of some variables, but, 
+ you've probably noticed that they are usually missing.
 
-This doesn't mean that some variables don't have a location, we know that every declared variables is stored somewhere.
+This doesn't mean that some variables don't have a location, 
+we know that every declared variables is stored somewhere.
 
 Also the data location rules differ according to the variables type and scope.
 
@@ -30,44 +32,55 @@ This information is up to date post Soliditiy ^0.8.7.
 
 Definitions and Usage:
 	
-	Each Data location in Solidity has a different purpose and we should use them cautiously. Keep in mind that, in some situations, Solidity strictly enforces a default location.
+	Each Data location in Solidity has a different purpose and we should use them cautiously. 
+	Keep in mind that, in some situations, Solidity strictly enforces a default location.
 	
 Storage 
-	- When placed in storage, a variable is written on the Blockchain, Everything that is on the chain, stays there. Every contract has its own storage, so these variables are persistent.
-	- Therefore you can access storage variables at all times. You can modify their value but their location is permanent, Every change is registered on the Blockchain.
+	- When placed in storage, a variable is written on the Blockchain, Everything that is on the chain, stays there. 
+	- Every contract has its own storage, so these variables are persistent.
+	- Therefore you can access storage variables at all times. 
+	- You can modify their value but their location is permanent, Every change is registered on the Blockchain.
 
 Memory
-	- Variables stored in memory are declared inside a function. They are temporary and their 'lifetime' is dependent on the runtime of the function they correspond to.
+	- Variables stored in memory are declared inside a function. They are temporary and their 'lifetime' 
+	- is dependent on the runtime of the function they correspond to.
 	- They are only accessible inside that method.
 	- Their purpose is to assist calculations.
 
 Calldata
-	- Calldata is a temporary data location in Solidity. It acts like memory, in terms of its dependence on the function's execution.
+	- Calldata is a temporary data location in Solidity. It acts like memory, in terms of its dependence 
+	- on the function's execution.
 	- The variables stored in Calldata are only available inside the function they are declared in.
 	- On top of that, Calldata variables are not modifiable. 
 	- This means that they cannot change their value.
 
 Helpful facts.
 
-	- There are some useful facts about data location in Solidity that might help you along the way. It is best to know them to avoid silly mistakes.
+	- There are some useful facts about data location in Solidity that might help you along the way. 
+	- It is best to know them to avoid silly mistakes.
 
 Gas.
 	- Storage is the most expensive data location you can use.
 	- Then there's memory which is between the two.
 	- And the cheapest being Calldata.
-	- Modifying storage is one of the most expensive operations you can do on Ethereum. To be memory efficient, try to minimize the number of times you alter state (global) variables.
+	- Modifying storage is one of the most expensive operations you can do on Ethereum. To be memory efficient, 
+	- try to minimize the number of times you alter state (global) variables.
 Must do.
 	- State (Global) variables always stay in storage and you cannot explicitly override that.
 	- Function parameters (Including the return parameters) must be in memory or calldata.
-// Prior to version ^0.6.9 data location for reference type arguments was limited to calldata in external functions, memory in public functions and either memory or storage in internal and private functions.
+// Prior to version ^0.6.9 data location for reference type arguments was limited to 
+// calldata in external functions, memory in public functions and either memory or storage in internal and private functions.
 // Now memory and calldata are allowed in all functions regardless of visibility.
-	- You cannot override the location of local variables of value type. You get a parser error. By default, they sit in memory.
-	- Since ^0.5.1, you must specify the location of Local variables of reference type. If you don't you will get a type error.
+	- You cannot override the location of local variables of value type. 
+	- You get a parser error. By default, they sit in memory.
+	- Since ^0.5.1, you must specify the location of Local variables of reference type. 
+	- If you don't you will get a type error.
 
 Assignment Rules.
 	- When assigning a storage variable the value of memory (Or calldata) one, it will create a copy. The other way around is true as well.
 	- Assignments between value types from the same data location (E.g. storage to storage) will make a copy.
-	- For reference types, when assigning from one memory variable to another memory variable, it will create a reference. They will point to the same data location. So if you modify one of them, it will reflect in both.
+	- For reference types, when assigning from one memory variable to another memory variable, it will create a reference. 
+	- They will point to the same data location. So if you modify one of them, it will reflect in both.
 	- Assigning from storage to local storage variables will also result in a reference.
 -------------------------------------------------------------------------------------------------
 
@@ -78,7 +91,8 @@ Memory vs. Storage.
 
 Storage:
 	- Global. 
-	- Meaning that the are available globally - In other words, are available in the entire contract, Inside and outside of the functions.
+	- Meaning that the are available globally - In other words, are available in the entire contract,
+	- Inside and outside of the functions.
 	- They're also stored permanently - meaning that even though it doesn't matter if you're sending a transaction or executing a function or not doing anything at all, 
 	- The Ethereum Network will save your variable forever until the contract is removed.
 	
