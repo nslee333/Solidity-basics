@@ -134,4 +134,26 @@ contract MemoryAndStorage {
 
 Alright, so after looking at this contract, the updateBalance function is what we're going to look at.
 
-The issue is that when we use the u
+The issue is that when we use the use the updateBalance function, the new data will be stored to temporary memory, and not actually 
+writting the new value to the mapping (storage).
+
+User memory user = users[id];
+user.balance = balance;
+
+User storage user = users[id];
+user.balance = balance;
+
+One way to solve this problem is just to change the updateBalance's data location from memory to storage.
+
+Another way to solve this issue is to modify the mapping directly.
+
+user[id].balance = balance;
+
+Another way we can fix this is:
+
+User memory user = users[id];
+user.balance = balance;
+users[id] = user;
+
+This is bad because the code isn't very clean and it copies back and forth unnecessarily.
+
