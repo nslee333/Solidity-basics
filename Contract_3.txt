@@ -4,4 +4,28 @@ https://www.youtube.com/watch?v=ipwxYa-F1uY&t=44s
 
 //----------------------------------------------------------------
 
-In this video, we're going to go over
+In this video, we're going to go over how to write a function that
+accepts ether.
+
+How can we send Ether in when we call function and do stuff with it.
+
+First we're going to create a function called buyToken.
+
+This function is going to emulate what happens at an ICO, or a crowd
+sale or pre-sale on Ethereum when you buy ERC-20 tokens.
+
+We're going to create a way to track the persons balance.
+
+We're going to do that with a mapping (associative array), with the
+address being the key and the value being a uint.
+
+We are going to set the visibility of the array to public.
+
+In the buyToken function we're going to modify the data in the 
+balances array, and whenever the person buys the token we're going
+to increase the balance count by one.
+
+balances[msg.sender] += 1;
+
+
+
