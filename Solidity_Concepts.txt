@@ -104,4 +104,34 @@ Memory
 	- After the function is performed, the variables assigned inside of the function will be removed from memory, making them temporary.
 	- The same rule applies to arguments, they are temporarily stored in memory under 'Memory', and will be removed from memory once the
 	- function execution is completed.
+Now we're going to look at a smart contract in this video, and see how big of a mistake you can make when you don't understand the difference
+between storage and memory.
 
+pragma solidity 0.5.2;
+
+contract MemoryAndStorage {
+	
+	mapping(uint => User) users;
+
+	struct User{
+		uint id;
+		uint balance;
+	}
+
+	function addUser(uint, id, uint balance) public {
+		users[id] = User(id, balance);
+	}
+
+	function updateBalance(uint, id, uint balance) public {
+		User memory user = users[id];
+		user.balance = balance;
+		}
+
+	function getBalance(uint id) view public returns (uint) {
+		return users[id].balance;
+	}
+}
+
+Alright, so after looking at this contract, the updateBalance function is what we're going to look at.
+
+The issue is that when we use the u
