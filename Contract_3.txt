@@ -1,0 +1,7 @@
+This is the thrid contract for this Solidity tutorial.
+https://www.youtube.com/watch?v=ipwxYa-F1uY&t=44s
+
+
+//----------------------------------------------------------------
+
+In this video, we're going to go over
