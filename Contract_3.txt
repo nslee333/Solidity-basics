@@ -27,5 +27,53 @@ to increase the balance count by one.
 
 balances[msg.sender] += 1;
 
+We want to transfer the funds that are sent into the smart contract 
+to a wallet.
+
+First we keep track of the wallet, and we want to send funds to This
+wallet.
+
+address wallet;
+
+What we're trying to do here is transfer the funds that are sent in 
+by this function to this wallet.
+
+in the wallet.transfer(msg.value), the msg.sender tells us how much 
+ether is being sent in by the person whos calling this function.
+
+In order for this function to accept payment we need to add the 
+modifier 'payable'.
+
+With out this modifier Solidity won't allow us to send Ether in with
+the transaction.
+
+This is how we declare that this function will accept Ether.
+
+There is a new Solidity update as of this video .
+(Please note: this video is several years old, so keep that in mind.)
+
+This Solidity update requires explicitness whenever you're declaring
+an address that can accept Ether inside of a smart contract.
+
+We do this by adding the keyword 'payable' to the adress wallet 
+declaration.
+
+address payable wallet;
+
+And also in the constructor parameters we'll add payable to it.
+
+(address payable _wallet).
+
+So now we're going to create a fallback function.
+It's going to act like a default function that you can wrap this
+in.
+
+This is super basic stuff, an actual ICO would be much much more 
+involved than what we're building here.
+
+
+
+
+
 
 
