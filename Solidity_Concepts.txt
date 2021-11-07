@@ -185,3 +185,49 @@ https://www.youtube.com/watch?v=3FY9FkJKSSI
 
 
 Fallback Functions:
+
+Let's talk Fallback Functions.
+
+The function cannot be named, it cannot take any inputs, and it cannot return and outputs.
+
+They must be declared with the external function modifier.
+
+This function will be called in two situations.
+
+1. When you call a function that does not exist.
+2. When you send Ether to this contract by 'send', 'transfer' or 'call'.
+
+In order for this contract to recieve Ether the fallback function must have the payable modifier declared.
+
+You can write the contractFunction inside of the fallback function, but it is not recommended.
+
+
+myContract{
+
+	function() external payable { // the contract function is wrapped in the fallback function.
+		contractFunction()
+	}
+}
+
+The reason is that when you send Ether by 'Send' or 'Transfer' it forwards 2300 gas to this fallback function.
+Which is enough gas to Emit a log, but not enough gas to write to Storage or call another contract.
+
+
+myContract{
+	event log(uint gas);
+
+	function() external payable { 
+		// Send / Transfer (forwards 2300 gas to this fallback function)
+		emit Log(gasLeft())
+	}
+}
+
+In order to prove that it only forwards 2300 gas, we're going to use a special function here called gasLeft, that returns 
+the remaining Gas.
+
+We'll also update our log event to return the amount of Gas left.
+
+We'll also create a helper function that returns the the amount of Ether stored in this contract.
+
+
+
