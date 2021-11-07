@@ -1,4 +1,25 @@
 
+
+Nathan's note:
+
+This is going to be my notes / transcripts of learning the concepts and the language of Solidity.
+
+Mostly this learning style is that I watch a video, and type the transcript out to fully learn the concepts instead of just watching the video.
+
+This is going to be notes focused on relevant learning, I'm mostly going off of dApp universities videos, and if I don't understand a concept.
+I'll look to other resources to learn that concept more in depth, and then I'll use the Feynman Technique to learn it further for my brain.
+
+//--------------------------------------------------------------------------------------------------------------------------------------------
+
+Table of Contents:
+
+- Data Location in Solidity - Line 23.
+
+- Fallback Function - line 181.
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+
+
 https://blockheroes.dev/data-location-in-solidity/
 
 Data Location in Solidity.
@@ -159,6 +180,8 @@ This is bad because the code isn't very clean and it copies back and forth unnec
 
 //-----------------------------------------------------------------------------------------------
 
+
+https://www.youtube.com/watch?v=3FY9FkJKSSI
 
 
 Fallback Functions:
