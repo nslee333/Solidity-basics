@@ -12,6 +12,10 @@ contract myContract {
         wallet = _wallet;
     }
 
+    function() external payable {
+        buyToken();
+    }
+
 
     function buyToken() public payable {
         // Buy a token.

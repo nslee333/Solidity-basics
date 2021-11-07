@@ -71,6 +71,38 @@ in.
 This is super basic stuff, an actual ICO would be much much more 
 involved than what we're building here.
 
+To write a fallback function we're going to write it like 
+this.
+
+We're going to wrap this fallback function around the buyToken()
+funtion.
+
+function() external payable {
+    buyToken();
+}
+
+This external modifier is a new one we haven't explored yet.
+
+It's different because public modifier can be called inside of our
+smart contract, as well as outside.
+
+However the external modifer can only becaused outside of the 
+smart contract.
+
+We don't want to call this function inside the smart contract.
+
+Fallback 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
