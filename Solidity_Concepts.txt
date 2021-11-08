@@ -235,7 +235,7 @@ contract Fallback{
 
 	function() external payable { 
 		// Send / Transfer (forwards 2300 gas to this fallback function)
-		emit Log(gasLeft())
+		emit log(gasLeft())
 	}
 
 	function getBalance() public view returns (uint) {
@@ -247,7 +247,7 @@ contract SendToFallback {
 
 	// In the inputs for the Transfer function below, we'll pass in the address of the Fallback contract above.
 	function transferToFallback(address payable _to ) public payable {
-		_to. transfer(msg.value);
+		_to.transfer(msg.value);
 	}
 
 	function callFallback(address payable _to) public payable {
@@ -276,4 +276,20 @@ Sending the Ether fowards all the gas to the fallback function and in that case 
 And to demonstrate this we're going create a function thats going the fallback contract above using the call method, and we'll name this 
 function callFallback.
 
+
+
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+Summary:
+
+
+Fallback Function:
+- Recieves 2300 Gas from transfer and send Methods.
+- But it can recieve more gas when it is invoked by the call method.
+- The Call method can forward all of the gas to the fallback function.
+-- Which means that you can write code like a regular function to execute inside the fallback function
+-- But it is not recommended to write much code inside the fallback function because transfer and send can fail.
+-- Or it can fail if it uses too much gas.
+-- Which means you won't be able to send Ether to the contract using the send or transfer method.
 
