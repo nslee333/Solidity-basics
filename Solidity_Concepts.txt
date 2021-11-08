@@ -213,7 +213,7 @@ The reason is that when you send Ether by 'Send' or 'Transfer' it forwards 2300 
 Which is enough gas to Emit a log, but not enough gas to write to Storage or call another contract.
 
 
-myContract{
+contract Fallback{
 	event log(uint gas);
 
 	function() external payable { 
@@ -229,5 +229,34 @@ We'll also update our log event to return the amount of Gas left.
 
 We'll also create a helper function that returns the the amount of Ether stored in this contract.
 
+
+contract Fallback{
+	event log(uint gas);
+
+	function() external payable { 
+		// Send / Transfer (forwards 2300 gas to this fallback function)
+		emit Log(gasLeft())
+	}
+
+	function getBalance() public view returns (uint) {
+		return address(this).balance;
+	}
+}
+
+contract SendToFallback {
+
+	// In the inputs for the Transfer function below, we'll pass in the address of the Fallback contract above.
+	function transferToFallback(address payable _to) public payable {
+		_to. transfer(msg.value);
+	}
+
+
+}
+
+
+
+We're also going to create a contract that will send Ether to the contract above, which will trigger the fallback function.
+
+We're going to send Ether with the Transfer method.
 
 
