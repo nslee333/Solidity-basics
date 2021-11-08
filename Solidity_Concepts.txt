@@ -246,10 +246,17 @@ contract Fallback{
 contract SendToFallback {
 
 	// In the inputs for the Transfer function below, we'll pass in the address of the Fallback contract above.
-	function transferToFallback(address payable _to) public payable {
+	function transferToFallback(address payable _to ) public payable {
 		_to. transfer(msg.value);
 	}
 
+	function callFallback(address payable _to) public payable {
+		// We'll send Ether using the call method and make sure it was able to send the Ether.
+		(bool sent,) = _to.call.value(msg.value)("");
+		require(sent, "Failed to send Ether.");
+
+
+	}
 
 }
 
@@ -258,5 +265,15 @@ contract SendToFallback {
 We're also going to create a contract that will send Ether to the contract above, which will trigger the fallback function.
 
 We're going to send Ether with the Transfer method.
+
+After we deploy these two contracts here we're going to pass in the address of the fallback contract above.
+
+Transfer forwards 2300 Ether and later whne we actually call this function here with the Emit Log(gasLeft()); we'll be able
+to see how much is left.
+
+Sending the Ether fowards all the gas to the fallback function and in that case gas theft can be greater than 2300.
+
+And to demonstrate this we're going create a function thats going the fallback contract above using the call method, and we'll name this 
+function callFallback.
 
 
