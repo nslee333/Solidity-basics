@@ -293,3 +293,37 @@ Fallback Function:
 -- Or it can fail if it uses too much gas.
 -- Which means you won't be able to send Ether to the contract using the send or transfer method.
 
+// -----------------------------------------------------------------------------------------------------------------------------------
+
+Fallback Functions Documentation
+
+https://docs.soliditylang.org/en/latest/contracts.html?highlight=fallback%20function#fallback-function
+
+A contract can have a most one fallback function, 
+- declared using the fallback() external [payable] or 
+- fallback(bytes calldata _input) external [payable] returns (bytes memory _output) 
+
+
+- Both without the function keyword.
+- This function must have the External visibility.
+- A fallback function can be:
+	- Virtual.
+	- Can override.
+	- Have Modifiers.
+
+The fallback function is executed on a call to the contract if none of the other functions match the given function signature, 
+- or f no data was supplied at all and there is not receive Ether function.
+- The fallback function always recieves data but in order to also recieve Ether it must be marked 'payable'.
+
+--
+
+If the version with the parameters is used, _input will contain the full data sent to the contract (equal to msg.data) and can return in
+_output. 
+
+The returning data will not be ABI encoded, instead it will be returned without modifications (not even padding).
+
+In the worst case, if a payable fallback function is also used in place of a recieve funtion, it can only rely on 2300 gas being available. 
+(See above tutorial.)
+
+Like any function, the fallback function can execute complex operations as long as there is enough gas passed into it.
+
