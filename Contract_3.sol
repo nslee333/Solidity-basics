@@ -8,11 +8,11 @@ contract myContract {
     // variable name is balances.
     address payable wallet;
 
-    constructor(address payable _wallet) public {
+    constructor(address payable _wallet) {
         wallet = _wallet;
     }
 
-    function() external payable {
+    fallback() external payable {
         buyToken();
     }
 

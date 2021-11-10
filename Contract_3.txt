@@ -86,14 +86,27 @@ This external modifier is a new one we haven't explored yet.
 It's different because public modifier can be called inside of our
 smart contract, as well as outside.
 
-However the external modifer can only becaused outside of the 
-smart contract.
+However the external modifer only allows functions to be called 
+outside of the smart contract.
 
 We don't want to call this function inside the smart contract.
 
-Fallback 
+//-----------------------------------------------------------
 
+Now we're going to talk about events in Solidity.
 
+Events are a way for external consumers to listen for things that 
+happen on a smart contract.
+
+Basically external consumers can subscribe to events on a smart 
+contract and wait for something to happen.
+
+So we'll do inside this buyToken function, watch it trigger an
+event that lets anyone on the Blockchain to know when a token has 
+been purchased from the Smart Contract if they were to listen for it
+(subscribed). 
+
+So we're going to create an event inside the buyToken function
 
 
 
