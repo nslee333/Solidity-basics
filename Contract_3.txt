@@ -106,7 +106,33 @@ event that lets anyone on the Blockchain to know when a token has
 been purchased from the Smart Contract if they were to listen for it
 (subscribed). 
 
-So we're going to create an event inside the buyToken function
+So we're going to create an event inside the buyToken function.
+
+So we'll define the event like so
+
+event Purchase(
+    address _buyer,
+    uint256 _amount,
+);
+
+So now we'll add the event trigger to the buyToken function,
+allowing other people to see how often its been bought.
+
+emit Purchase(msg.sender, msg.value);
+
+In this instance, we'll just pass in the _amount as 1, 
+since you can only purchase one at a time, but hypothetically we can
+assign a variable to the amount the buyer wants to purchase, and pass 
+that in as _amount argument.
+
+We'll pass in the msg.sender value as the argument for the buyer,
+and we'll pass in 1 as the argument for the _amount parameter for the
+event trigger Purchase().
+
+
+
+
+
 
 
 

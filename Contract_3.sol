@@ -8,6 +8,11 @@ contract myContract {
     // variable name is balances.
     address payable wallet;
 
+    event Purchase(
+        address _buyer,
+        uint256 _amount
+    );
+
     constructor(address payable _wallet) {
         wallet = _wallet;
     }
@@ -22,7 +27,7 @@ contract myContract {
         balances[msg.sender] += 1;
         wallet.transfer(msg.value);
         // Send ether to the wallet.
-
+        emit Purchase(msg.sender, 1);
 
 
     }
