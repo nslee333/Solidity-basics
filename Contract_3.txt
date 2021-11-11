@@ -163,8 +163,107 @@ So what are events for then?
 
 Theres two main cases for an 'Event'.
 
-Because of the Asynchronous nature of the Blockchain you 
+Because of the Asynchronous nature of the Blockchain you're building
+an application that talks to the smart contract you might call a 
+function like buyToken, 
 
+if you're writing a JS application, you might call this function
+and then your application would just know that you called this 
+function but you might want to wait for this to finish and execute
+and wait for this event to be emitted.
+
+You can filter for the events that are applicable to you and whenever
+that happens you can wait for that to happen and then reload your
+application state whenever that events been triggered.
+
+So that's one popular use case,
+
+Another use case is that you can get the entire event stream from a 
+smart contract like this so you basically see all of the purchase 
+events because they're listed in these logs, (in remix, they are 
+listed under transactions.)
+
+//-----------------------------------------------------------------
+
+End of Part 5.
+
+Here's the unedited code:
+
+pragma solidity 0.5.1;
+
+
+contract myContract {
+    mapping(address => uint256) public balances;
+    // mapping, user address which is key, and the value is the 
+    // balance of the account, public visibility and the mapping 
+    // variable name is balances.
+    address payable wallet;
+
+    event Purchase(
+        address _buyer,
+        uint256 _amount
+    );
+
+    constructor(address payable _wallet) {
+        wallet = _wallet;
+    }
+
+    fallback() external payable {
+        buyToken();
+    }
+
+
+    function buyToken() public payable {
+        // Buy a token.
+        balances[msg.sender] += 1;
+        wallet.transfer(msg.value);
+        // Send ether to the wallet.
+        emit Purchase(msg.sender, 1);
+
+
+    }
+}
+
+//-----------------------------------------------------------------
+
+Going to explain the code here:
+
+
+
+pragma solidity 0.5.1;
+
+
+contract myContract {
+    mapping(address => uint256) public balances;
+    // mapping, user address which is key, and the value is the 
+    // balance of the account, public visibility and the mapping 
+    // variable name is balances.
+    address payable wallet;
+
+    event Purchase(
+        address _buyer,
+        uint256 _amount
+    );
+
+    constructor(address payable _wallet) {
+        wallet = _wallet;
+    }
+
+    fallback() external payable {
+        buyToken();
+    }
+
+
+    function buyToken() public payable {
+        // Buy a token.
+        balances[msg.sender] += 1;
+        wallet.transfer(msg.value);
+        // Send ether to the wallet.
+        emit Purchase(msg.sender, 1);
+
+
+    }
+}
 
 
 

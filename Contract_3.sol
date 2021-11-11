@@ -1,5 +1,6 @@
-pragma solidity 0.5.1;
+// SPDX-License-Identifier: MIT
 
+pragma solidity 0.5.1;
 
 contract myContract {
     mapping(address => uint256) public balances;
