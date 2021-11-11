@@ -93,6 +93,15 @@ We don't want to call this function inside the smart contract.
 
 //-----------------------------------------------------------
 
+
+Events in Solidity.
+
+//-----
+
+Declaring the Event
+
+//-----
+
 Now we're going to talk about events in Solidity.
 
 Events are a way for external consumers to listen for things that 
@@ -106,7 +115,7 @@ event that lets anyone on the Blockchain to know when a token has
 been purchased from the Smart Contract if they were to listen for it
 (subscribed). 
 
-So we're going to create an event inside the buyToken function.
+So we're going to create an event trigger inside the buyToken function.
 
 So we'll define the event like so
 
@@ -117,6 +126,9 @@ event Purchase(
 
 So now we'll add the event trigger to the buyToken function,
 allowing other people to see how often its been bought.
+
+-- Event Trigger --
+
 
 emit Purchase(msg.sender, msg.value);
 
@@ -129,6 +141,29 @@ We'll pass in the msg.sender value as the argument for the buyer,
 and we'll pass in 1 as the argument for the _amount parameter for the
 event trigger Purchase().
 
+
+-- Indexing Events -- 
+
+
+Another thing you can do with Events is that you can create an index
+
+'address indexed _buyer' 
+
+And that will allow you to filter events that are only from certian
+buyers.
+
+Like for example if you wanted to listen to events on the contract
+from a certian person, or a specific address.
+
+We'll take a look at that next.
+
+emit Purchase(msg.sender, 1);
+
+So what are events for then?
+
+Theres two main cases for an 'Event'.
+
+Because of the Asynchronous nature of the Blockchain you 
 
 
 
