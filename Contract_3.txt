@@ -228,12 +228,27 @@ contract myContract {
 
 Going to explain the code here:
 
+//------------------------------------------------------------------
 
+
+
+// SPDX-License-Identifier: MIT
+
+// This is the SPDX license Identifier, basically Solidity 
+uses a warning to encourage users to identifiy what type of
+license being used, making it easier for people to indenfity how
+they can use your code when it is open-source.
 
 pragma solidity 0.5.1;
 
+// Solidity smart contracts always need the Solidity compiler version
+specified to make sure the compiler will operate correctly with the code.
 
-contract myContract {
+
+contract myContract
+// contract declaration
+
+{
     mapping(address => uint256) public balances;
     // mapping, user address which is key, and the value is the 
     // balance of the account, public visibility and the mapping 
