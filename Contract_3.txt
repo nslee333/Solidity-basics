@@ -246,14 +246,38 @@ specified to make sure the compiler will operate correctly with the code.
 
 
 contract myContract
-// contract declaration
+// contract declaration, contract variable name.
 
 {
     mapping(address => uint256) public balances;
-    // mapping, user address which is key, and the value is the 
-    // balance of the account, public visibility and the mapping 
-    // variable name is balances.
+// Mapping declaration (data structure that focuses on key value
+pairs.), 
+
+// address is the key, and the uint256 is the data type 
+the value will be stored with.
+
+// public is the visibility of the function, public states that 
+anyone on the blockchain can call this function.
+
+// ballances is the variable name of the mapping.
+(All the mapping key value pairs will be stored under the
+variable name balances.)
+
+// the user (address) is the key, and the value (uint256) is the 
+balance of the account.
+
+
     address payable wallet;
+
+// In this line, you're assigning variable name wallet to a 
+specific address.
+// address is the inderlying data.???????????????????
+// Payable is a function declaration, this 
+
+
+ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+
+
 
     event Purchase(
         address _buyer,
