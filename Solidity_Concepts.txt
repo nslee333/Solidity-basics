@@ -529,5 +529,44 @@ A good example of a view function is a getter function that returns state inform
 
 In ERC20.sol, there are a few getter functions, including retrieving token supply for a specific address.
 
+	mapping (address => uint256) private _balances;
+	function balanceOf(address account) public view ovverride returns (uint256) {
+		return _balances[account];
+	}
+
+the balanceOf() function returns the token balance attributed to a given address, returning one of the entries in the _balance mapping.
+
+-- Pure --
+
+A function with a pure modifier specifies that the function must never modify AND access state.
+
+A pure modifier is stricter than a view modifier, which ensures that the internal state of a contract can never be accessed.
+
+In addition to the list of actions that view functions are not allowed to do, a pure function adds some more.
+
+A Pure function has the same list of actions that are NOT allowed, as well as the following.
+
+1. View or modify state - pure functions may perform calculations but are not allowed to access internal contract state.
+2. Accessing contract Ether balance - cannot perform checks related to the balance of addresses.
+3. Unable to access block, tx, msg data - unable to access transaction information (tx.origin) or msg information (msg.sender).
+
+The specifications of a "Pure" function are from functional programming, where functions' arguments define the scope. This means that the function must be
+able to execute solely with the arguments it has recieved, without accessing contract state or contract data.
+
+A good example of a pure function is the SafeMath library, which provides mathematical checks to ensure that the variables do not overflow/underflow 
+after performing mathematical calculations such as adding:
+
+	function add(uint256 a, uint256 b) internal pure returns (uint256) {
+		uint256 c = a + b;
+		require(c >= a, "SafeMath: addition overflow");
+
+		return c;
+	}
+
+The add() function showcased above is a pure function, as it recieves all the variables that it requires to check for overflow.
+
+Given the uint256 a and uint256 b, the add function returns the result of the addition, given that the value has not overflowed.
+
+
 
 
