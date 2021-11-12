@@ -339,3 +339,46 @@ address payable, is largely the same but with the additional members transfer an
 
 The idea behind the distinction, is that payable address is an address you can send Ether to.
 
+//------------------------------------------------------------------------
+
+https://www.natchineth.com/post/solidity-function-specification-and-modifiers/
+
+Solidity function visibility 
+Specifications and Built in Modifiers.
+
+What's the difference between Solidity Function Visibility (Public, External, Private and Internal)?
+What should you use one over the other?
+How do you know when to use Solidity Modifiers(pure, view)?
+
+Solidity functions are usually of the following form, where it specifies a function visibility and a modifier attributed to a certian function.
+
+This blog post goes into detailed function visibility specifiers(Public, External, Private, Internal) and a few select modifiers (pure, view)
+that often cause confusion between developers.
+
+// ----------------------------------------------------------------------------------------
+
+Public Visibility.
+
+In Solidity, the Public keyword is used for functions where they can be called by any external account and any internal/external contract on the 
+Blockchain.
+
+This means that public functions are used in cases where a function is expected to provide information to anyone who calls it.
+
+A good example where a public function may be useful is in cases where variables are being accessed or overall state changes.
+
+By looking at the ERC-20.sol token implementation, there are a variety of functions below that are public. An example of public functions used in the 
+standard are below:
+
+function transfer(addres recipient, uint256 amount) public virtual override returns (bool) {
+	_transfer(_msgSender(), recipient, amount);
+	return true;
+}
+
+The transfer()function can be called by anyone with an external address(one in a wallet) and any contract to transfer token funds from the sender
+to a certain recipient.
+
+The public modifier on this function ensures that there are no access control restrictions on who can call this function.
+
+//----------------------------------------------------------------------------------------------
+
+External functions
