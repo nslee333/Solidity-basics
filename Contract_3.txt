@@ -271,16 +271,12 @@ balance of the account.
 
 // In this line, you're assigning variable name wallet to a 
 specific address.
-// address is the inderlying data.???????????????????
+// address is keyword that gets the address of the currently executing
+account. (msg.sender, i.e. the person executing the contract.)
 // Payable is a function modifier, transfering the payable 
 functionality to the variable name.
 
-
-ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
-
-
-
-    event Purchase(
+   event Purchase(
         address _buyer,
         uint256 _amount
     );
@@ -329,7 +325,15 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
     Ether in this function.
 
     buyToken is nested inside of this fallback function.
-    zzzzzzzzzzzzzzzzzzzzzzzz??
+    We wrap the buyToken in the fallback function for two possible
+    scenarios.
+    
+    1. A contract recieves Ether but no data with it, causing an error.
+    2. The function called by the outside address does not exist, even
+    though it still recieved data.
+
+    When one of these two scenarios happen, the fallback function
+    is called, and it handles the error.
 
     function buyToken() public payable {
         --------------
