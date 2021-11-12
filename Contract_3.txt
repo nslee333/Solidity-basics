@@ -370,7 +370,8 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
         .transfer method sends the value from the smart contract
         to the wallet balance
 
-        (msg.value) is the value
+        (msg.value) is the amount of Ether provided to this contract
+        in wei can be accessed in this msg.value.
         
         
         // Send ether to the wallet.

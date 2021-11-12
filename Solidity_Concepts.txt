@@ -567,6 +567,10 @@ The add() function showcased above is a pure function, as it recieves all the va
 
 Given the uint256 a and uint256 b, the add function returns the result of the addition, given that the value has not overflowed.
 
+//-----------------------------------------------------------------------------------
+
+msg.sender and other examples.
+
 
 
 
