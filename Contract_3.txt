@@ -376,9 +376,14 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
         
         // Send ether to the wallet.
         emit Purchase(msg.sender, 1);
+
+        // This emits the event alert to whoever is listening,
+        and it outputs the buyer address and the amount purchased.
+
+        // emit event trigger keyword, Purchase event function call
+        msg.sender is the address buying the token, and the amount
+        purchased.
     }
-
-
 
 }
 
