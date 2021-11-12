@@ -272,7 +272,8 @@ balance of the account.
 // In this line, you're assigning variable name wallet to a 
 specific address.
 // address is the inderlying data.???????????????????
-// Payable is a function declaration, this 
+// Payable is a function modifier, transfering the payable 
+functionality to the variable name.
 
 
 ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
@@ -283,6 +284,14 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
         address _buyer,
         uint256 _amount
     );
+
+    // This is an Event declaration, it allows us to define, and use
+    an event for later use.
+    // Event declaration, Event variable name, 
+    In the arguments it's assigning, the address to the _buyer 
+    variable name, and the uint256 data type to _amount.
+    Essentially we are setting the parameter/trigger
+
 
     constructor(address payable _wallet) {
         wallet = _wallet;
