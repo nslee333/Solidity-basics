@@ -571,6 +571,37 @@ Given the uint256 a and uint256 b, the add function returns the result of the ad
 
 msg.sender and other examples.
 
+In Solidity there are special variables and functions which always exist globally, and are used to provide information about the Blockchain.
+
+They can be used to assist with error handling, employ mathematical and cryptographic funtions, and present information about contract addresses
+and the contracts themselves.
+
+The msg global variables in partiocular are special global variables that contrain properties which allow access to the Blockchain.
+
+For instance msg.sender is ALWAYS the address where the current function call came from.
+
+// E.g. If i called and function in a smart contract, then my address would be msg.sender.
+
+For example: let's look at this code,
+
+below, we're using a mapping of user addresses and their associated levels in this game application,
+
+mapping(address => uint) public userLevel;
+
+This function below will advance the user to the next level.
+
+function incrementLevel() internal {
+	userLevel[msg.sender]++;
+}
+
+You'll notice in this example we're using the msg.sender global variable to get the current user's address.
+
+Along with msg.sender there are other msg special global variables that are useful:
+
+- msg.data - the complete CALLDATA which is non-modifiable, non-persistant area where function arguments are stored and behave mostly like memory.
+- msg.gas - returns the available gas remainin for a current transaction.
+- msg.sig - the first four bytes of the CALLDATA for a function that specifies the function to be called (i.e., its a function identifier).
+- msg.value - the amount of wei sent with a message to a contract (wei is a denomination of Eth.)
 
 
 
