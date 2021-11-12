@@ -329,8 +329,109 @@ Like any function, the fallback function can execute complex operations as long 
 
 //-----------------------------------------------------------------------------------
 
+Fallback functions explained.
+
+https://www.geeksforgeeks.org/solidity-fall-back-function/
+
+The solidity fallback function is executed if none of the other functions match the function identifier or no data was provided with the function call.
+
+Only one unnamed function can be assigned to the contract and it is executed whenever the contract receives Ether without any data.
+
+To recieve Ether and add it to the total balance of the contract, the fallback function must be marked payable.
+
+If no such function exists, the contract cannot recieve Ether through regular transactions and will throw an exception.
+
+Properties of a fallback function:
+
+1. It has no name or arguments.
+2. If it is not marked with the payable modifier, the contract will throw an exception if it recieves plain Ether without data.
+3. Cannot return anything.
+4. Can be defined once per contract.
+5. It is also executed if the caller meant to call a function that is not available.
+6. It is mandatory to mark it external.
+7. It is limited to 2300 Gas when called by another function. It is so for as to make this function call as cheap as possible.
+
+Example Code.
+
+pragma solidity ^0.4.0;
+
+contract myContract {
+	uint x,
+
+	mapping(address => uint) balance;
+
+	constructor() public {
+		x=10;
+	}
+	
+	function setX(uint _x) public returns (bool){
+		x = _x;
+		return true;
+	}
 
 
+	// This fallback function will keep all of the Ether.
+
+	function() public payable {
+		balance[msg.sender] += msg.value;
+	}
+}
+
+
+contract Sender {
+	function transfer() public payable {
+		// Address of the myContract;
+		address _reciever = 0xbcc0185441de06F0452D45AEd6Ad8b98017796fb;
+
+		// Transfers 100 Eth to the above contract.
+		_reciever.transfer(100);
+	}
+}
+
+
+Explination:
+
+1. Contract myContract: 
+
+- It has the variable x which is set to the default value 10 in this constructor(). The contract has a function called setX(uint_x) which
+sets the function value to the desired parameter sent during the function call.
+
+// In other words, the variable x is set in the beginning using the constructor function.
+// And the setX function sets the value of x to whatever you input into the argument of the setX function.
+
+The below declaration creates address to value map called balance which maps the address to their balance.
+
+mapping(address => uint) balance;
+
+2. Contract Sender.
+
+- This is a complete different and independent contract. It sends a value in Ether to the myContract.
+- This contract does not know the mechanism of the myContract.
+- Sending a transaction without any message and only Ether can cause an error.
+
+- The below statements declare a variable _reciever of the address type.
+- It explicitly stores the address of the contract myContract.
+- Then it uses address.transfer(value) to transfer Ether to the contract.
+
+address _reciever = 0xbcc0185441de06F0452D45AEd6Ad8b98017796fb; // Address of the myContract.
+
+_reciever.transfer(100);
+
+3. Function public payable.
+the function below is a fallback function. It is declared payable which allows it to accept transfer value.
+It is called in two cases.
+
+1. A contract recieves only Ether and no data.
+2. No function calls matcheded even through the account recieved data.
+
+This helps us to protect the function from throwing an error.
+
+In this program, the contract recieves only Ether and the fallback function uses the value recieved to add to the
+balance related to the sending address.
+
+function() public payable {
+	balance[msg.sender] += msg.value;
+}
 
 
 
