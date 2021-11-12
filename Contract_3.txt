@@ -291,16 +291,36 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
     In the arguments it's assigning, the address to the _buyer 
     variable name, and the uint256 data type to _amount.
     Essentially we are setting the parameter/trigger
+    so that we can view the buyer and the amount purchased.
+
 
 
     constructor(address payable _wallet) {
         wallet = _wallet;
     }
 
+    // The constructor function is a function that is called only once,
+    Whatever is performed in the constructor is performed when the
+    contract is deployed. 
+
+    constructor declaration, address payable _wallet is passed in
+    and the _wallet function is assigned to the wallet variable.
+
+    zzzzzzzzzzzzzzzzzzzzzzzz not sure why we need to do this.
+
+
     fallback() external payable {
         buyToken();
     }
 
+    // Fallback function is used when a non-existant function is 
+    called on the contract.
+
+    Basically if someone calls a function, and it dosent exist, and
+    sends Ether, it reverts back to the fallback function.
+
+    fallback declaration, external (external visibility, 
+        but not inside)
 
     function buyToken() public payable {
         // Buy a token.

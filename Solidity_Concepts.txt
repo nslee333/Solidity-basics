@@ -327,3 +327,15 @@ In the worst case, if a payable fallback function is also used in place of a rec
 
 Like any function, the fallback function can execute complex operations as long as there is enough gas passed into it.
 
+//-------------------------------------------------------------------
+
+Solidity address
+
+it comes in two flavors, which are largely identical.
+
+address holds a 20 byte size, (size of an Ethereum adress).
+
+address payable, is largely the same but with the additional members transfer and send.
+
+The idea behind the distinction, is that payable address is an address you can send Ether to.
+
