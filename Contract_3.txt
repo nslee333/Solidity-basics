@@ -319,18 +319,66 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
     Basically if someone calls a function, and it dosent exist, and
     sends Ether, it reverts back to the fallback function.
 
-    fallback declaration, external (external visibility, 
-        but not inside)
+    fallback declaration, 
+    
+    external visibility (Addresses and contracts
+    outside of the contract can call this function, but this contract
+    and this user, cannot call this function) 
+
+    payable modifier adds the functionality of sending and recieving
+    Ether in this function.
+
+    buyToken is nested inside of this fallback function.
+    zzzzzzzzzzzzzzzzzzzzzzzz??
 
     function buyToken() public payable {
-        // Buy a token.
+        --------------
+        // This function's purpose is to purchase tokens.
+        1. We're going to first add tokens to the balance of the 
+        user's address
+        2. We're going to send the Ether to the contract
+        owner's wallet.
+        3. Then we're going to emit a Purchase event for anyone
+        who is listening to the contract.
+
+        // Function declaration, 
+        function variable name, 
+        public visibility (Any Address or contract, inside or
+        outside the contract can call this funciton.)
+        payable modifier (Adds the ability to send or recieve Ether.)
+        ---------------
+        // Buying the token, we increase the amount balance of the 
+        user.
         balances[msg.sender] += 1;
+        
+        // This line, we're writing to the balances mapping,
+        we're increasing the amount in the balance of the buyToken()
+        user. 
+        
+        msg.sender is the function user (In other words,
+        the person buying the token.)
+        
+        ----
         wallet.transfer(msg.value);
+        
+        // This line of cod we're sending the Ether to the address
+        (wallet)
+
+        wallet is the variable name assigned to the address of the 
+        user.
+
+        .transfer method sends the value from the smart contract
+        to the wallet balance
+
+        (msg.value) is the value
+        
+        
         // Send ether to the wallet.
         emit Purchase(msg.sender, 1);
-
-
     }
+
+
+
 }
 
 
