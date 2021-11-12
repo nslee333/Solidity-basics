@@ -411,4 +411,62 @@ According to the Ethereum Yellowpaper, a JUMPDEST call uses 1 unit of gas.
 
 External functions in Solidity do not use internal functions, thus do not need to keep arguments in memory.
 
-This information can be read from the CALLDATA of the transaction
+This information can be read from the CALLDATA of the transaction, as there's no need to store this in memory for another function to interact with.
+
+When considering the contruction and access control on public functions, one could reason that a public function is one that is External and Internal.
+
+This construction makes it significantly easier for us to understand why public functions consume more gas.
+
+Since public functions can be called by the contract itself, it will always save the arguments in memory. 
+
+This means that the gas consumption by a public function should be expected to be higher than an external function.
+
+//------------------------------------------------------------------------------------------------------------------
+
+Internal Functions.
+
+Internal functions can only be accessed by the contract the function resides in, and the children of the contract.
+
+In the case of class hierarchy, this function can be called by inherited contracts but not external accounts or external contracts.
+
+These functions are typically helper functions, which is called by external/public functions.
+
+By taking a look at the native ERC20.sol token implementation on OpenZeppelin, there are two transferring functionalities (as see in transfer 
+and trasferFrom). Both of these functions make use of the internal _transfer() functionality, which serves as a helper function for this contract
+and all other implemented inheritences of the ERC-20 token (which has the added option of being cappable, pausable etc.).
+
+Through this ERC20 token code, we can take a deeper look into what the difference between internal and public functions are:
+
+	function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
+		_transfer(_msgSender(), recipient, amount);
+		return true;
+	}
+	function transferFrom(address sender, address recipient, uint256 amount) public virtual override returns (bool) {
+		_transfer(sender, recipient, amount);
+		_approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, "ERC20: Transfer amount exceeds allowance"));
+		return true;
+	}
+	function _transfer(addres sender, address recipient, uint256 amount) internal virtual {
+		require(sender != address(0), "ERC20: Transfer from the zero address.");
+		require(recipient != address(0), "ERC20: Transfer to the zero address");
+
+		_beforeTokenTransfer(sender, recipient, amount);
+
+		_balances[sender] = _balances[sender].sub(amount, "ERC20: Transfer amount exceeds balance.");
+		_balances[recipient] = _balances[recipient].add(amount);
+		emit Transfer(sender, recipient, amount);
+	}
+
+The transferFrom() and the transfer() function both have public visibility on them, which ensures that these functions can be called by anyone.
+
+Both of these functions also call an internal _transfer() function, which performs the transfer functionality.
+
+the _transfer() function is a helper function to the other two functions, which provides transfer implementations.
+
+The internal visibility on the _transfer() function ensures that the function can only be called within the ERC20 Token Implementation.
+
+This ensures that external accounts and external contracts are unable to invoke this function.
+
+//-------------------------------------------------------------------------------------------------------------------------------
+
+Private Functions.
