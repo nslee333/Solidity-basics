@@ -382,3 +382,33 @@ The public modifier on this function ensures that there are no access control re
 //----------------------------------------------------------------------------------------------
 
 External functions
+
+External functions are set on functions that can only be called by an external account or external contract.
+
+This means that, for contract A, if it has a function b(), no functions in A can access b().
+
+b() can be called by externally owned addresses or contracts that are not related to A, but the external keyword prevents all other functions 
+in the same contract from calling it.
+
+A prevalent example of external functions are in the IERC20.sol contracts, which are interfaces that specify ERC-20 Implementation.
+
+function transfer(address recipient, uint256 amount) external returns (bool);
+
+Similar to interfaces in other OOP languages, interfaces define the behaviour of a certain contract and do not conatin implementation details.
+
+The ERC20 interface transfer() function specifies that the implementation contract must have a transfer() function, which takes the same arguments and 
+returns the same values.
+
+The External specification ensures that the interface cannot call its own functions (which is not possible due to the interface not containing implementation.)
+
+This does allow other contracts outside of this function to call this function.
+
+Solidity under the hood for public and external functions:
+
+Internal functions in Solidity are executed via JUMP, which means that the  arguments for the function are expected to be located in memory.
+
+According to the Ethereum Yellowpaper, a JUMPDEST call uses 1 unit of gas.
+
+External functions in Solidity do not use internal functions, thus do not need to keep arguments in memory.
+
+This information can be read from the CALLDATA of the transaction
