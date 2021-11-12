@@ -470,3 +470,64 @@ This ensures that external accounts and external contracts are unable to invoke 
 //-------------------------------------------------------------------------------------------------------------------------------
 
 Private Functions.
+
+Functions with a private visibility are an even smaller subset of internal functions, specifiying that the function can ONLY be called inside the 
+contract itself.
+
+These functions are typically helper functions, with an even smaller scope of access control - limiting to the contract code that it is located in.
+
+Private functions should bne called by functions that have a winder access scope (such as Internal, Public or External) - with the contents of the 
+function calling a private function.
+
+An example of a private function can be seen in ERC20Snapshot.sol as a part of the OpenZeppelin lubrary, where the _burn() internal function invokes
+private functions in the contract.
+
+	function _burn(address account, uint256 value) internal virtual overrride {
+		_updateAccountSnapshot(account);
+		_updateTotalSupplySnapshot();
+
+		super._burn(account, value);
+	}
+	function _updateAccountSnapshot(address account) private {
+		_updateSnapshot(_accountBalanceSnapshot[account], balanceOf(account));
+	}
+	function _updateSnapshot(Snapshots storage snapshots, uint256 currentValue) private {
+		uint256 currentId = _currentSnapshotId.current();
+		if (_lastSnapshotId(snapshots.ids)< currentId>) {
+			snapshots.ids.push(currentId);
+			snapshots.values.push(currentValue);
+		}
+	}
+
+This example above demostrates the expected flow of private functions, where the _burn() function can be invoked by any of the inherited ERC20 contracts.
+
+In the function, it calls a private helper function, which updates the snapshot data on the ERC20 balances at a certian point in time.
+
+In this case, there was a specific design decision chosen to keep all the snapshot functionality private to the ERC20Snapshot.sol file, since no other
+ERC20 implementations understand the concept of a snapshot.
+
+//----------------------------------------------------------------------------------------------------------------------------------------------
+
+Solidity Function Modifiers.
+
+Aside from function visibility specifiers, there is an important difference between 'pure' and 'view' modifiers that are provided in Solidity.
+
+-- View --
+
+a function with a view modifier specifies that the function must never "modify state". As this definition of "modification of state" can be ambigious,
+here are a few actions that are NOT allowed in view functions.
+
+These are NOT allowed in a View function.
+
+1. Writing to a variable in a contract - this implementation is SAVING STATE.
+2. Emitting events - events are often emitted to notify event listeners that a contract state has changed.
+3. Sending Ether to another address - transfering Ether among addresses changes the state of an Ether balance.
+4. Calling a non view / pure function - all functions that a view function calls must also no change state of contracts.
+5. Using a STATICCALL - similar to (4), where the implementation/function may change the state of an object/contract.
+
+A good example of a view function is a getter function that returns state information from a certian contract.
+
+In ERC20.sol, there are a few getter functions, including retrieving token supply for a specific address.
+
+
+
