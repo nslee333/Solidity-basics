@@ -359,3 +359,25 @@ contract myToken is ERC20Token {
     }
 }
 
+So that's how you override costructors from parent contracts.
+
+Now let's override the mint() function inside as well.
+
+Let's add some extra behavior, we want to preserve this mint() 
+function we still want to keep track of the balance.
+
+We also want to do some extra stuff.
+
+Let's keep track of the people who actually own the tokens.
+
+string public _name; 
+string public _symbol;
+
+constructor(
+    bytes32 memory _name, 
+    bytes32 memory _symbol
+) 
+    ERC20Token(_name)
+public {
+    symbol = _symbol;
+}
