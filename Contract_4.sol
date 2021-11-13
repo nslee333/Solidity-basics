@@ -7,7 +7,7 @@ contract ERC20Token {
     mapping(address => uint256) public balances;
 
     function mint() public payable {
-        balances[msg.sender] ++;
+        balances[tx.origin] ++;
 
     }
 

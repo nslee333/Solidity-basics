@@ -181,4 +181,55 @@ _token.mint();
 Now we can call this by token function from this smart contract, and
 you'll call the mint() funciton from the ERC20Token contract.
 
+// Personal note:
 
+This point in the tutorial, I ran into an error, that I'm not sure how
+to deal with at this point in my Education, so I'm passing over it at
+this point, and I'll try to revisit it at some point.
+
+// Sooo, in the tutorial, he uses the buyToken() function, and the
+transaction goes through, only the issue is that since I cannot
+run that function due to the error I keep getting, I can't fully 
+experience this myself.
+
+Keep in mind, we deployed two contracts in remix with this file, 
+
+1. the ERC20Token contract.
+    has the:
+        mint() function,
+        name state variable,
+        and also has the balances mapping.
+2. the myContract.
+    has the:
+        buyToken() function.
+
+In the tutorial, he uses the buyToken, the transaction goes through
+but the balance of that specific address does not go up.
+
+However, when uses the mint() function on the ERC20Token, the
+balance does go up.
+
+
+Basically he goes on to say that the msg.sender function can sometimes
+mess you up when you call a function from SC1 in SC2.
+
+Earlier when you call the mint() function directly, the balance goes
+up.
+
+This is because msg.sender in this case is the address of contract that
+called the function, NOT who sent it.
+
+So we can get the address of the contract/person who sent the initial
+tranaction with the tx.origin function.
+
+that will actually mint functions for whoever initiates the transaction
+
+So if we call Mint function from the ERC20Token contract, it'll
+increment the balance, and if we call it from the myContract it'll 
+also increment the balance of the person/contract who called the
+buyToken() function.
+
+So the msg.sender function can be a real gotcha when dealing with
+multiple smart contracts interacting with each other.
+
+// So now 
