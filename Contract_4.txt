@@ -370,14 +370,18 @@ We also want to do some extra stuff.
 
 Let's keep track of the people who actually own the tokens.
 
-string public _name; 
-string public _symbol;
+So we'll create a counter cache of the people who own the Tokens.
 
-constructor(
-    bytes32 memory _name, 
-    bytes32 memory _symbol
-) 
-    ERC20Token(_name)
-public {
-    symbol = _symbol;
+So what we're going to do is that we're going to keep the 
+same functionality of the mint() token, but adding to it as well.
+
+So we're going to keep the same functionality of the mint() 
+function from the parent contract using the following code.
+
+function mint() public {
+    super.mint(); // This inherits the parent mint() functionality.
+    ownerCount++; // Adds to the count of owners.
+    owners.push(msg.sender); // pushes the msg.sender (In other words
+    the contract / person who executed the contract. ) to the owners array.
 }
+

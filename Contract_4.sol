@@ -16,3 +16,33 @@ contract ERC20Token {
         balances[tx.origin] ++;
     }
 }
+
+
+contract myToken is ERC20Token {
+    string public _symbol;
+
+    address[] public owners;
+    uint256 ownerCount;
+
+    constructor(
+        string memory _name, 
+        string memory _symbol
+    ) 
+        ERC20Token(_name)
+    public {
+        symbol = _symbol;
+    }
+
+    function mint() public {
+        super.mint();
+        ownerCount++;
+        owners.push(msg.sender);
+    }
+
+}
+
+
+
+
+
+

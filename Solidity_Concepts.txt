@@ -686,7 +686,7 @@ In Solidity there are special variables and functions which always exist globall
 They can be used to assist with error handling, employ mathematical and cryptographic funtions, and present information about contract addresses
 and the contracts themselves.
 
-The msg global variables in partiocular are special global variables that contrain properties which allow access to the Blockchain.
+The msg global variables in particular are special global variables that contrain properties which allow access to the Blockchain.
 
 For instance msg.sender is ALWAYS the address where the current function call came from.
 
