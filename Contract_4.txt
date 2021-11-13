@@ -93,3 +93,92 @@ public visibility.
 
 string public name;
 
+We're going to transfer the balances mapping.
+
+mapping(address => uint256) public balances;
+
+We're going to take the balance increment function, and put it into
+it's own function.
+
+We're also going to write ++ instead of += 1.
+
+We took out the purchase event to simplify the code.
+
+Inside of the ERC20 contract, we want to mint tokens.
+
+We want to call the ERC20 contract in the buyToken() function.
+
+Since both contracts are in the same file, they know that each other 
+exists.
+
+We can be basically explicit and tell this contract if you want to mint
+tokens in this contract.
+
+In order to do that there's a few things we need.
+
+We need to know the address of this contract which is deployed because
+both contracts will have seperate addresses since they can only be 
+deployed seperately.
+
+myContract needs to know about the ERC20Token contract's address.
+
+Then we'll basically reference the smart contract with the address.
+
+And we'll kindof get an instance of it and then we'll call the mint
+function on it.
+
+This is a two step process.
+
+1. We need ERC20Token's address so that myContract can reference it.
+2. Then we need to instansiate myContract.
+3. We call the mint() function.
+
+First we'll get access to this Token address, we'll say address token
+in the parameters of the constructor function.
+
+We'll also give it the public visibility.
+
+constructor (address payable _wallet, address _token) public {
+    wallet = _wallet;
+    token = _token;
+}
+    
+So with that, we have the address, we need to get an instance of it.
+
+So we're instanciating the contract with calling the
+ERC20Token(); call inside of the buyToken() function call.
+
+We do that by passing in the Token address that we've kept track of
+here.
+
+Since ^0.5 requires explicitness, we'll add in 
+
+ERC20Token(address(token));
+
+Basically with instantiating the ERC20Token, in this case, its 
+deployed, and calling this address, we'll use this token to call the
+mint function. 
+
+All of this we can assign to a variable, and with Solidity we have to
+specifiy the data type.
+
+The data type will be ERC20Token, and this is a local variable not 
+a state (global) variable, so we're going to prepend it with an
+underscore.
+
+ERC20Token _token = ERC20Token(address(token));
+
+// Heres a breakdown of the syntax, ERC20Token is the data type.
+_token is the variable name, and the ERC20Token(address(token) is the
+location of that token variable??????????????????????????
+
+
+
+Now we can mint the token like this.
+
+_token.mint();
+
+Now we can call this by token function from this smart contract, and
+you'll call the mint() funciton from the ERC20Token contract.
+
+
