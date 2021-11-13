@@ -1,0 +1,95 @@
+Personal note:
+
+This is my notes from this video tutorial from dApp university.
+
+https://www.youtube.com/watch?v=ipwxYa-F1uY&t=44s
+
+My goal with this is to learn the code, write notes down that I 
+can reference later.
+
+At the end of the tutorial, I will:
+
+1. Write down the beginning code, and the end code.
+2. I will write out two copies of the code.
+    1. The unexplained code.
+    2. The explained code, the goal is to get myself familiar on
+    how to explain the code, how it works and the proper syntax and
+    nomenclature.
+3. I will go through the contract and explain how it works, the syntax
+and the direct nomenclature of the syntax.
+
+//----------------------------------------------------------------
+
+Beginning contract.
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity 0.5.1;
+
+contract myContract {
+    mapping(address => uint256) public balances;
+    // mapping, user address which is key, and the value is the 
+    // balance of the account, public visibility and the mapping 
+    // variable name is balances.
+    address payable wallet;
+
+    event Purchase(
+        address _buyer,
+        uint256 _amount
+    );
+
+    constructor(address payable _wallet) {
+        wallet = _wallet;
+    }
+
+    fallback() external payable {
+        buyToken();
+    }
+
+
+    function buyToken() public payable {
+        // Buy a token.
+        balances[msg.sender] += 1;
+        wallet.transfer(msg.value);
+        // Send ether to the wallet.
+        emit Purchase(msg.sender, 1);
+
+
+    }
+}
+
+
+// Start of the tutorial.
+
+In this tutorial we're going to go through how to use multiple 
+smart contracts in the Solidity programming language.
+
+We're going to write two seperate Smart Contracts, one that will
+talk to the other and also show you how to understand parent-child.
+relationships with Smart Contracts.
+
+(Basically we'll talk about inheritance.).
+
+We're going to keep the scenario where we're going to buy the token.
+
+Instead of keeping track of the balance inside of this Smart Contract,
+we're going to spilt the contract into two.
+
+We'll move the balance code into a Token contract, and the buyToken
+
+This is again, going to be a super basic example, it won't be an 
+ERC-20 compatible token, but it will be a functional example.
+
+We'll explore how two contracts call one another at a very simple 
+example.
+
+Starting with the Token contract, we'll start with defining the
+contract.
+
+contract ERC20Token.
+
+We'll declare a state variable 'name', and we'll give it the
+public visibility. 
+
+string public name;
+

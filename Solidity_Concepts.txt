@@ -715,4 +715,10 @@ Along with msg.sender there are other msg special global variables that are usef
 
 //-----------------------------------------
 
+Function overloading.
+
+Function overloading is when you have the same variable name for
+multiple functions, but the parameters (inputs) and outputs are 
+different.
+
 
