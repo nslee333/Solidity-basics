@@ -232,4 +232,130 @@ buyToken() function.
 So the msg.sender function can be a real gotcha when dealing with
 multiple smart contracts interacting with each other.
 
-// So now 
+tx.origin always refers back to the person who originated the 
+transaction, even if a smart contract is calling the function.
+
+So be aware of that potential snag with dealing with smart contracts
+that talk to each other.
+
+One last thing we can learn, is the shorthand for the following:
+
+function buyToken() public payable {
+    ERC20Token _token = ERC20Token(address(token));
+    _token.mint();
+    wallet.transfer(msg.value);
+}
+
+We can eliminate the variable assignment, and call the mint() 
+function directly on it.
+
+function buyToken() public payable {
+    ERC20Token(address(token)).mint();
+    _token;
+    wallet.transfer(msg.value);
+}
+
+This will do the exact same thing as the code above.
+
+//---------------------------------------------------------
+
+copy of the code before we change topics.
+
+//---------------------------------------------------------
+
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity 0.5.1;
+
+contract ERC20Token {
+    string public name;
+    mapping(address => uint256) public balances;
+
+    function mint() public payable {
+        balances[tx.origin] ++;
+
+    }
+}
+
+contract myContract {
+
+    address payable wallet;
+    address public token;
+
+    constructor(address payable _wallet, address _token) {
+        wallet = _wallet;
+    }
+
+    fallback() external payable {
+        buyToken();
+    }
+
+    function buyToken() public payable {
+        ERC20Token _token = ERC20Token(address(token));
+        _token.mint();
+        wallet.transfer(msg.value);
+        // Send ether to the wallet.
+    }
+}
+
+
+//------------------------------------------------------------
+
+Inheritance.
+
+
+
+Alright so now we're going to move onto the next topic which is
+how to inherit smart contract, or inheritance.
+
+Inheritance, or having a parent-child relationship.
+
+Now creating a token that inherits from this basic ERC-20 token, is 
+to do two things.
+
+So we'll keep the same functionality, and we'll give this token
+a second token below.
+
+So we inherit using the code below.
+
+contract myToken is ERC20Token {
+
+}
+
+So let's customize this token, the first thing we can do is override
+the name.
+
+string public name = "My Token";
+
+So this is basic inheritance, if it is defined a second time, it is 
+overwritten.
+
+In other words the code in the child contract can override the parent
+contract.
+
+In the myToken contract we were able to still use some of the
+parameters of the parent contract, and still redefine some of the 
+child functions.
+
+(Parent constructor)
+
+    constructor(string memory _name) public {
+        name = _name;
+    }
+
+(Child constructor)
+
+contract myToken is ERC20Token {
+    string public _symbol;
+
+    constructor(
+        string memory _name,
+        string memory _symbol
+    )
+        ERC20Token(_name)
+    public {
+        symbol = _symbol;
+    }
+}
+
