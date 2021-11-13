@@ -385,3 +385,7 @@ function mint() public {
     the contract / person who executed the contract. ) to the owners array.
 }
 
+Alright so that is how we inherit contracts in Solidity.
+
+
+

@@ -12,9 +12,7 @@ contract ERC20Token {
     constructor(string memory name) public {
         name = _name;
     }
-    function mint() public {
-        balances[tx.origin] ++;
-    }
+
 }
 
 
