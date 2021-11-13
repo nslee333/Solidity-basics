@@ -721,4 +721,31 @@ Function overloading is when you have the same variable name for
 multiple functions, but the parameters (inputs) and outputs are 
 different.
 
+//------------------------------------------------------
 
+tx.origin vs msg.sender explained.
+
+https://ethereum.stackexchange.com/questions/1891/whats-the-difference-between-msg-sender-and-tx-origin
+
+With msg.sender, the owner can be a contract.
+
+with tx.origin, the owner can never be a contract.
+
+inside a simple call chain a-b-c-d, inside D, msg.sender can be c, and tx.origin will be A.
+
+msg.sender is preferred for the flexibility it provides.
+
+Furthermore, for Serenity, even though its a while out, Vitalik recommends avoiding tx.origin: 
+
+Carefully consider if you really ever need to use tx.origin. Remember you may not be the only user of your contract.
+
+Other people may want to use your contract and want to interact with it via a contract that they've written.
+
+// 
+
+The tx.origin global variable refers to the original external account that started the transaction.
+
+While msg.sender refers to the immediate account(it could be external or another contract account) that invokes the function.
+
+If there are multiple function invocations on multiple contracts, tx.origin will always refer to the account that started the transaction
+irrespective of the stack of contracts invoked.

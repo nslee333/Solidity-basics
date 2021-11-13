@@ -387,5 +387,161 @@ function mint() public {
 
 Alright so that is how we inherit contracts in Solidity.
 
+Code after the tutorial:
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity 0.5.1;
+
+contract ERC20Token {
+    string public name;
+    mapping(address => uint256) public balances;
+
+    function mint() public payable {
+        balances[tx.origin] ++;
+
+    constructor(string memory name) public {
+        name = _name;
+    }
+
+}
+
+
+contract myToken is ERC20Token {
+    string public _symbol;
+
+    address[] public owners;
+    uint256 ownerCount;
+
+    constructor(
+        string memory _name, 
+        string memory _symbol
+    ) 
+        ERC20Token(_name)
+    public {
+        symbol = _symbol;
+    }
+
+    function mint() public {
+        super.mint();
+        ownerCount++;
+        owners.push(msg.sender);
+    }
+
+}
+
+
+//-------------------------------------------
+
+The contracts explained.
+
+// SPDX-License-Identifier: MIT
+
+// License identifier, this is encouraged by the Ethereum foundation
+and Remix to let other developers know exactly what they can do 
+with your source code.
+
+
+pragma solidity 0.5.1;
+
+// Pragma Solidity declaration is to help the compiler 
+figure out which version of Solidity the code is written in
+for proper compiler operation.
+
+
+
+contract ERC20Token {
+    
+// contract declaration, this is the beginning of the first 
+smart contract.
+
+// contract keyword declaration, contract variable name.
+    
+    
+    string public name;
+    
+    // State variable declaration, essentially it is a global variable 
+    that with the public modifier it can be accessed by any address, contract
+    or person on the blockchain.
+
+    // String is the data type, public is the visibilitiy modifier, and the
+    name is the variable name.
+    
+    mapping(address => uint256) public balances;
+
+    // This is a mapping, mappings are essentially a data structure that
+    functions as a key, value data structure. Very similar to Python's 
+    dictionary.
+
+    // In this example, it's used to store the addresses and their correlating
+    token balance.
+
+    // This will help us later with minting the tokens, and adding the Tokens
+    to their addresses.
+
+    // mapping key word, (address => uint256) (key, value), public visibility
+    modifier, mapping variable name 'balances'.
+
+    function mint() public payable
+    
+    // This is a function declaration of the mint() function,
+    it will be the function that we will call when we buy the tokens.
+
+    // function keyword, function variable name 'mint', public visibilitiy 
+    modifier, payable function modifier.
+
+    // The payable function modifier is a special modifier that allows
+    function to recieve or send Ether.
+    
+    {
+        balances[tx.origin] ++;
+
+        // This line of code increments the balance amount of the account
+        who is calling the mint() function.
+
+        // balances is the mapping described above, this code is Writing
+        to the mapping, using the tx.orign as the address, it increases the
+        count by one.
+
+        // balance mapping call, [tx.origin] is the address of the person 
+        executing the contract, and calling the mint() function, 
+
+        // ++; is shorthand in Solidity for adding 1;
+
+        // tx.origin is kinda complicated, but I'll explain it a little
+        here.
+
+        // 
+
+
+    constructor(string memory name) public {
+        name = _name;
+    }
+
+}
+
+
+contract myToken is ERC20Token {
+    string public _symbol;
+
+    address[] public owners;
+    uint256 ownerCount;
+
+    constructor(
+        string memory _name, 
+        string memory _symbol
+    ) 
+        ERC20Token(_name)
+    public {
+        symbol = _symbol;
+    }
+
+    function mint() public {
+        super.mint();
+        ownerCount++;
+        owners.push(msg.sender);
+    }
+
+}
 
 
