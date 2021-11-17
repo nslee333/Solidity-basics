@@ -553,18 +553,44 @@ and use it in later parts of the contract.
 
     address[] public owners;
 
-// This is an empty, public array named owners, this is going to
+// This is an empty, public array named owners, this is going to hold a list of owners that have bought the tokens.
+
+// address is the data type, [] = array, public visibility, and owners is the variable name of the array.
 
     uint256 ownerCount;
+
+// state variable owner count, the data type is uint256, (which is unsigned integer (no -, or . in the number), 256 stands for the bytes of the data type.)
+// This will be used to keep track of how many owners there are.
+
 
     constructor(
         string memory _name, 
         string memory _symbol
     ) 
+
+// Constructor function, this special function is only called once, and it is mostly used for initializing state variables and other things.
+// This instance, we're using the constructor function to help us initialize two state variables, _name and _symbol.
+
+// constructor declaration.
+
+// String memory _name 
+// This is going to be a string data type, stored in memory (temporary memory, which is deleted when the function call is done.) and the 
+variable name will be _name.
+
+// Ditto above for string memory _symbol.
+
+
         ERC20Token(_name)
     public {
         symbol = _symbol;
     }
+
+
+
+
+
+
+
 
     function mint() public {
         super.mint();
