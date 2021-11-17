@@ -525,13 +525,18 @@ smart contract.
     // This constructor function, is called once when the contract is deployed, its mainly used to initialize state variables, and to help with
     security by defining the address.
 
-    // Here we're calling the constructor function, and we have parameters set up for a string, thats stored in memory, and it's variable name is name.
+    // Here we're calling the constructor function, and we have parameters set
+     up for a string, thats stored in memory, and it's variable name is name.
 
-    // Constructor declaration, function parameters (inside the parentheses), public keyword (Any Address or Contract, inside or out of the contract
+    // Constructor declaration, function parameters (inside the parentheses),
+     public keyword (Any Address or Contract, inside or out of the contract
 may call this function)
-    // name = _name; is the state variable initialization. (In other words, its assigning them to each other, setting them in stone.) 
-        (In computer programming, initialization (or initialization) is the assignment of an initial value for a data object or value.)
-        (To set(something, such as a computer program counter) to a starting position, value or configuration.)
+    // name = _name; is the state variable initialization. 
+    (In other words, its assigning them to each other, setting them in stone.) 
+    (In computer programming, initialization (or initialization) 
+    is the assignment of an initial value for a data object or value.)
+    (To set(something, such as a computer program counter) 
+    to a starting position, value or configuration.)
 }
 
 
@@ -539,13 +544,16 @@ contract myToken is ERC20Token {
 
 // Contract myToken beginning code:
 
-// contract declaration, variable name, 'is ERC20Token' is an inheritance syntax, inheritance allows us to extend the functionality of contracts.
+// contract declaration, variable name, 'is ERC20Token' is an 
+inheritance syntax, inheritance allows us to extend the functionality 
+of contracts.
 
 
 
     string public _symbol;
 
-// State variable declaration, this is a state variable that cannot be overwritten or modified, we're going to declare this state variable here
+// State variable declaration, this is a state variable that cannot be 
+overwritten or modified, we're going to declare this state variable here
 and use it in later parts of the contract.
 
 // string (data type), public (visibility keyword), _symbol (variable name)
@@ -553,13 +561,17 @@ and use it in later parts of the contract.
 
     address[] public owners;
 
-// This is an empty, public array named owners, this is going to hold a list of owners that have bought the tokens.
+// This is an empty, public array named owners, 
+this is going to hold a list of owners that have bought the tokens.
 
-// address is the data type, [] = array, public visibility, and owners is the variable name of the array.
+// address is the data type, [] = array, public visibility, 
+and owners is the variable name of the array.
 
     uint256 ownerCount;
 
-// state variable owner count, the data type is uint256, (which is unsigned integer (no -, or . in the number), 256 stands for the bytes of the data type.)
+// state variable owner count, the data type is uint256, 
+(which is unsigned integer (no -, or . in the number), 
+256 stands for the bytes of the data type.)
 // This will be used to keep track of how many owners there are.
 
 
@@ -568,28 +580,46 @@ and use it in later parts of the contract.
         string memory _symbol
     ) 
 
-// Constructor function, this special function is only called once, and it is mostly used for initializing state variables and other things.
-// This instance, we're using the constructor function to help us initialize two state variables, _name and _symbol.
+// Constructor function, this special function is only called once,
+ and it is mostly used for initializing state variables and other things.
 
-// constructor declaration.
+// This time, we are defining two variable names in this constructor parameters.
 
-// String memory _name 
-// This is going to be a string data type, stored in memory (temporary memory, which is deleted when the function call is done.) and the 
-variable name will be _name.
+// First parameter is string memory _name,
 
-// Ditto above for string memory _symbol.
+// This parameter will:
+-  take a string of data (string data type), 
+ - will be stored in memory,
+ (memory, which is temporary, which is deleted after the function call is 
+complete.) 
+- It will recieve the variable name '_name'.
+
+
+
+
+// Second parameter is string memory _symbol,
+
+// This argument (parameter) will:
+- Take a string of data.
+- Will be stored in memory.
+- It will recieve the variable name '_symbol'.
+
+// Now: these are just parameters for the constructor funciton.
+We haven't gotten functions that will be initiailzed in this constructor.
 
 
         ERC20Token(_name)
     public {
         symbol = _symbol;
     }
+// So apparently this tutorial is leaving alot of thing unexplained, and I'm trying to make sense of it, I might come back to this,
+// Because this looks like he is naming the ERC20Token contract (parent contract) in the constructor function call, and declaring it with
+the variable _name, and I'm not entirely sure what this does, but I'll figure it out.
 
+// This has to be some sort of Inheritance call, because later in this contract, we use super.mint() which allows us to mint() tokens from the parent 
+contract
 
-
-
-
-
+// Public visibility, and initiailzing the symbol state variable.
 
 
     function mint() public {
@@ -597,6 +627,12 @@ variable name will be _name.
         ownerCount++;
         owners.push(msg.sender);
     }
+
+// This is the mint() function, this is the function to mint the Token.
+// What we're going to do with this is 
+
+
+
 
 }
 

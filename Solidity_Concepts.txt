@@ -886,9 +886,13 @@ And later we're going to use this address to protect the execution of some funct
 
 Initialization
 
-In computer programming, initialization (or initialization) is the assignment of an initial value for a data object or value.)
+In computer programming, 
+initialization (or initialization) is the assignment of an initial value for a data object or value.
+
 https://en.wikipedia.org/wiki/Initialization_(programming)
+
 To set(something, such as a computer program counter) to a starting position, value or configuration.
+
 https://www.merriam-webster.com/dictionary/initialize
 
 

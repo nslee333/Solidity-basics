@@ -27,7 +27,8 @@ contract myToken is ERC20Token {
         string memory _symbol
     ) 
         ERC20Token(_name)
-    public {
+    public 
+    {
         symbol = _symbol;
     }
 
