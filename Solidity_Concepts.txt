@@ -750,3 +750,50 @@ While msg.sender refers to the immediate account(it could be external or another
 If there are multiple function invocations on multiple contracts, tx.origin will always refer to the account that started the transaction
 irrespective of the stack of contracts invoked.
 
+//-----------------------------------------------------------------------------------------------------------------------
+
+Solidity Constructors:
+
+Constructor is a special function declared using the constructor keyword.
+
+It is an optional function that is used to initialize state variables of a contract.
+
+Following are the key characteristics of a constructor.
+
+- A contract can only have one constructor.
+- A constructor ccode is executed once when a contract is created and it is used to initialize contract state.
+- After constructor code executes, the final code is deployed to the blockchain. This code includes public functions and code reachable through public
+functions and code reachable through public functions. Constructor code or any internal method used only by the constructor are not included in final code.
+- A constructor can be either public or internal.
+- A internal constructor marks the contract as abstract.
+- In case, no constructor is defined, a default constructor is present in the contract.
+- In case, base contract have constructor with two arguments, each derived contract has to pass them.
+- Base contructor can be initialized directly using the following way.
+	
+	pragma solidity ^0.5.0;
+
+	contract Base {
+		uint data;
+		constructor(uint _data) public {
+			data = _data;
+		}
+	}
+	contract Derived is Base (5) {
+		constructor public () {}
+	}
+- Base constructor can be initialized using the following way -
+
+pragma solidity ^0.5.0;
+
+contract Base {
+	uint data;
+	constructor(uint _data) public {
+		data = _data;
+	}
+}
+contract Derived is Base {
+	constructor(uint _info) Base (_info * _info) public ()
+}
+
+- Direct and Indirect ways of initialzing base contract constructor is not allowed.
+- If derived contract is not passing argument(s) to base constructor the derived contract will become abstract.

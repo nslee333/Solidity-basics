@@ -511,12 +511,18 @@ smart contract.
         // tx.origin is kinda complicated, but I'll explain it a little
         here.
 
-        // 
+        // tx.origin is the initiator of the first transaction.
+
+        // Personal note: tx.origin is going to be removed, because of security issues, so I'll be passing on explaining it, since the explinations
+        are murky at best.
+
 
 
     constructor(string memory name) public {
         name = _name;
     }
+
+    // This constructor function, is called once when the contract is deployed, 
 
 }
 
