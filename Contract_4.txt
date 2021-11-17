@@ -522,8 +522,16 @@ smart contract.
         name = _name;
     }
 
-    // This constructor function, is called once when the contract is deployed, 
+    // This constructor function, is called once when the contract is deployed, its mainly used to initialize state variables, and to help with
+    security by defining the address.
 
+    // Here we're calling the constructor function, and we have parameters set up for a string, thats stored in memory, and it's variable name is name.
+
+    // Constructor declaration, function parameters (inside the parentheses), public keyword (Any Address or Contract, inside or out of the contract
+may call this function)
+    // name = _name; is the state variable initialization. (In other words, its assigning them to each other, setting them in stone.) 
+        (In computer programming, initialization (or initialization) is the assignment of an initial value for a data object or value.)
+        (To set(something, such as a computer program counter) to a starting position, value or configuration.)
 }
 
 

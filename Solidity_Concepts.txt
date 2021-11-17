@@ -753,6 +753,7 @@ irrespective of the stack of contracts invoked.
 //-----------------------------------------------------------------------------------------------------------------------
 
 Solidity Constructors:
+https://www.tutorialspoint.com/solidity/solidity_constructors.htm
 
 Constructor is a special function declared using the constructor keyword.
 
@@ -797,3 +798,95 @@ contract Derived is Base {
 
 - Direct and Indirect ways of initialzing base contract constructor is not allowed.
 - If derived contract is not passing argument(s) to base constructor the derived contract will become abstract.
+
+//-------------------------------------------------------------------------------
+
+https://www.youtube.com/watch?v=ADVifGOanVU
+
+We'll go over 5 sections in this tutorial:
+
+1. Declaring the constructor.
+2. Difference with regular functions.
+3. Admin pattern.
+4. Calling other functions.
+5. Calling parent constructors.
+
+A constructor function is a really good place to put all of your initialization logic.
+
+However a constructor function dosent work exactly like a regular function.
+
+contract myContract {
+	uint a;
+	constructor(uint _a) public {
+		a = _a; // This is initializing the state variable _a;
+		// Here you can put other initialization logic.
+	}
+}
+
+A constructor is declared like this, it can take arguments.
+
+The main difference between regular functions and the constructor function, is that the constructor function can only be called once when you
+deploy the smart contract.
+
+After you deploy the contract, the code inside of the constructor cannot be called again.
+
+The second difference between constructor and vanilla functions is that there are only two visibility keywords allowed in a constructor function.
+- Public.
+- Internal.
+
+Public is the keyword you will use in most cases, but in some cases you might want to use internal.
+
+Whenever you use the internal keyword, it means that you cannot call the constructor function directly, only an inherited child contract can
+call the constructor when you use the interal keyword.
+
+contract myContract {
+	uint a;
+	constructor(uint _a) internal {
+		a = _a;
+		// Other initialization.
+	}
+}
+
+contract myDeriviedContract is myContract { // Inheritance syntax.
+	constructor(12);
+}
+
+// This example is a good example of the internal keyword being used on the myContract constructor.
+
+Most cases we'll want to keep the public visibility.
+
+------- Admin Pattern ------------
+
+In most contracts there will be one function that you want to protect from external sources calling that funtion, and for that you can use the 
+admin pattern.
+
+The admin pattern is where a specific address is allowed to call some functions.
+
+So for admin pattern, you need to first define an address variable we'll call it admin, and inside the constructor function, what we'll do 
+is that we'll insantiate this admin to the center of the transaction.
+
+contract myContract {
+	address admin;
+	constructor() public {
+		admin = msg.sender;
+	}
+}
+
+And later we're going to use this address to protect the execution of some function.
+
+------- Other Functions -----------
+
+
+
+
+////
+
+
+
+
+Initialization
+
+In computer programming, initialization (or initialization) is the assignment of an initial value for a data object or value.)
+https://en.wikipedia.org/wiki/Initialization_(programming)
+To set(something, such as a computer program counter) to a starting position, value or configuration.
+https://www.merriam-webster.com/dictionary/initialize
