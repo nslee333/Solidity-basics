@@ -890,3 +890,6 @@ In computer programming, initialization (or initialization) is the assignment of
 https://en.wikipedia.org/wiki/Initialization_(programming)
 To set(something, such as a computer program counter) to a starting position, value or configuration.
 https://www.merriam-webster.com/dictionary/initialize
+
+
+

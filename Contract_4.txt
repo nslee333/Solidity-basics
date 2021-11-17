@@ -536,9 +536,25 @@ may call this function)
 
 
 contract myToken is ERC20Token {
+
+// Contract myToken beginning code:
+
+// contract declaration, variable name, 'is ERC20Token' is an inheritance syntax, inheritance allows us to extend the functionality of contracts.
+
+
+
     string public _symbol;
 
+// State variable declaration, this is a state variable that cannot be overwritten or modified, we're going to declare this state variable here
+and use it in later parts of the contract.
+
+// string (data type), public (visibility keyword), _symbol (variable name)
+
+
     address[] public owners;
+
+// This is an empty, public array named owners, this is going to
+
     uint256 ownerCount;
 
     constructor(
