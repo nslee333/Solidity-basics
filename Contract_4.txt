@@ -616,8 +616,10 @@ We haven't gotten functions that will be initiailzed in this constructor.
 // Because this looks like he is naming the ERC20Token contract (parent contract) in the constructor function call, and declaring it with
 the variable _name, and I'm not entirely sure what this does, but I'll figure it out.
 
-// This has to be some sort of Inheritance call, because later in this contract, we use super.mint() which allows us to mint() tokens from the parent 
-contract
+// This has to be some sort of Inheritance call, because later in
+ this contract, we use super.mint() which calls a mint() function
+ from the ERC20Token contract. So that must be what it's doing.
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 // Public visibility, and initiailzing the symbol state variable.
 
@@ -628,8 +630,10 @@ contract
         owners.push(msg.sender);
     }
 
-// This is the mint() function, this is the function to mint the Token.
-// What we're going to do with this is 
+// This is the mint() function, this is the function to 
+mint the Token.
+// What we're going to do with this is, we're going to call a function
+from the parent contract (ERC20Token), 
 
 
 
