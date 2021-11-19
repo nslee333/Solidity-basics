@@ -30,5 +30,42 @@ DRY is an acronym for Don't Repeat Yourself.
 For example, if we have a function that we're going to use inside of
 multiple smart contracts we can create a library
 
+One of the main benefits of using a library is that if we're using 
+multiple smart contracts, and if we're using the same function in all
+of them, then if we have to change one function, then we change it 
+once in the Library.
 
+Libraries have similar syntax as a contract, but they don't have the
+same functionality.
+
+You can't inherit from a library, at the end of the day, the library
+is made to be used inside of the smart contract.
+
+So for example lets declare a divison function in our smart contract.
+
+function calculate (uint _value1, uint _value2) public {
+    value = _value1 / _value2;
+}
+
+So, here's a question, what happens when value 2 is zero?
+
+It will throw a division error.
+
+So since we don't want that division error, we can define that 
+function in a library.
+
+function divide(uint256 a, uint256 b) internal pure returns (uint256) {
+    requre(b > 0);
+    uint256 c = a / b;
+    return c;
+}
+
+So with this function, we can divide two integers and we can handle
+the error.
+
+This is a super common use case for libraries in Solidity.
+
+When we compile myContract, the Solidity compiler knows that the 
+contract is dependant upon the Math library, so it is compiled with 
+the smart contract, and is depoloyed automatically. (Remix??)
 
