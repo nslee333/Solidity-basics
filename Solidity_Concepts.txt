@@ -876,13 +876,7 @@ And later we're going to use this address to protect the execution of some funct
 
 ------- Other Functions -----------
 
-
-
-
 ////
-
-
-
 
 Initialization
 
@@ -895,5 +889,10 @@ To set(something, such as a computer program counter) to a starting position, va
 
 https://www.merriam-webster.com/dictionary/initialize
 
+
+
+//-----------------------------------
+
+super.
 
 
