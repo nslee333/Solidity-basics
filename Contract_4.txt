@@ -660,16 +660,18 @@ and calling the mint() function from that parent contract.
 // ownersCount is using solidity shorthand to increase the count for everytime 
 this mint() function is called.
 
-owners.push(msg.sender); // This is adding the address of the msg.sender
+// owners.push(msg.sender); // This is adding the address of the msg.sender
 (the person or contract who executed the contract), 
 also known as pushing the address to the owners[] array.
 
-This is taking a record of everyone who has bought the token at ICO.
+// This is taking a record of everyone who has bought the token at ICO.
 
-
-
-
+// array variable name (owners) . array method (.push), (msg.sender) is the 
+address that will be pushed to the owners array, adding the address to the list 
+of owners.
 
 }
 
+
+This is the end of contract_4.
 
