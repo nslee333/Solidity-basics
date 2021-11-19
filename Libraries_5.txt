@@ -82,3 +82,41 @@ import "./Math.sol";
 Use double quotes for the file name, and the '.' is used to 
 refer to the current directory.
 
+// One more thing we're going to check out.
+
+There is a library by openzeppelin - Solidity, and it's called
+SafeMath.sol.
+
+This library implements a lot of helpful functions in this library.
+
+Using this SafeMath.sol library, we can use the functions directly 
+on the unsigned integers.
+
+So, when we have a library in the same directory as us, we can use
+the following line of code to import it.
+
+import "./SafeMath.sol";
+
+This library has multiple useful functions that are very useful.
+
+using this statement:
+
+using SafeMath for uint256;
+
+
+One of the abilities is this.
+
+
+Instead of this code:
+
+value = Math.divide(_value1, _value2);
+
+we can use this:
+
+value = _value1.div(_value2);
+
+// Personal note:
+
+My issue with Gregory at dApp university is that he dosent fully 
+explain how it works completely, and leaves things unexplained, 
+but I guess that's what I get for free training right? :)
