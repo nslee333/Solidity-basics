@@ -200,23 +200,49 @@ type and the variable name of the contract to the compiler.
     
     using SafeMath for uint256;
 
-    // This is an OpenZeppelin syntax for declaring the v
+    // ZZZZZzzzzzzzzzz
 
     
     uint256 public value;
+    
+// Data type uint256, (integer) public visibility, variable
+name value.
+
+
 
     function calculate(uint _value1, uint _value2) public {
+
+// This is a function to calculate, we have two uint values that
+we'll input, and we'll return with an output.
+
+// Function declaration, calculate variable name, 
+uint (data type) variable name, uint (data type) variable name
+
+
+
+
         value = Math.divide(_value1, _value2);
+
+// In this we're assiging the variable name to the result 
+of this line of code.
+
+// Math.divide(_value1, _value2); 
+This line, is telling the compiler where to go to find the function
+code.
+
+Math. is the library declaration, .divide is the function call
+for that library.
+
+(parameters).
+
+
         // value = _value1.div(_value2);
+
+This is the code for using the SafeMath.sol library from OpenZeppelin
+and it greately simplifies the code and how we write it out.
+
     }
 }
-
-
-
-
-
-
-
 
 ----------- Math Library -------------
 
@@ -224,9 +250,23 @@ type and the variable name of the contract to the compiler.
 
 pragma solidity 0.5.1;
 
+// Solidity version declaration.
+
+
 
 library Math {
+
+library declaration keyword, Math is the variable name for it.
+
     function divide(uint256 a, uint256 b) internal pure returns (uint256) {
+
+function declaration, function variable name, (parameters)
+// Internal visibility, this means that the code can only be called by the
+contract the function resides in, or by a child contract.
+
+
+   
+   
         require(b > 0)
         uint256 c = a / b;
         return c;  
