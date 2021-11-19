@@ -612,9 +612,12 @@ We haven't gotten functions that will be initiailzed in this constructor.
     public {
         symbol = _symbol;
     }
-// So apparently this tutorial is leaving alot of thing unexplained, and I'm trying to make sense of it, I might come back to this,
-// Because this looks like he is naming the ERC20Token contract (parent contract) in the constructor function call, and declaring it with
-the variable _name, and I'm not entirely sure what this does, but I'll figure it out.
+// So apparently this tutorial is leaving alot of thing unexplained, 
+and I'm trying to make sense of it, I might come back to this,
+// Because this looks like he is naming the ERC20Token contract 
+(parent contract) in the constructor function call, and declaring it with
+the variable _name, and I'm not entirely sure what this does, 
+but I'll figure it out.
 
 // This has to be some sort of Inheritance call, because later in
  this contract, we use super.mint() which calls a mint() function
@@ -634,6 +637,35 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 mint the Token.
 // What we're going to do with this is, we're going to call a function
 from the parent contract (ERC20Token), 
+
+super.mint();
+
+// Using the super keyword in this function call, we're calling the mint()
+function from the parent contract.
+
+// In the Solidity Documentation, this super.zzz keyword is defined as:
+- "The contract one level higher in the inheritance hierarchy."
+
+// In essence, this super. keyword helps us specifiy where to find the function
+declaration.
+
+super.mint(); calls the mint() function from the ERC20Token, which increases 
+the balance count of tx.origin (origional transaction initiator).
+
+// function mint() // Declaration, public visibility;
+// super.mint(); // super keyword, calling the inheritance of the parent contract
+and calling the mint() function from that parent contract.
+
+
+// ownersCount is using solidity shorthand to increase the count for everytime 
+this mint() function is called.
+
+owners.push(msg.sender); // This is adding the address of the msg.sender
+(the person or contract who executed the contract), 
+also known as pushing the address to the owners[] array.
+
+This is taking a record of everyone who has bought the token at ICO.
+
 
 
 
