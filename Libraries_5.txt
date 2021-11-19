@@ -1,0 +1,34 @@
+Part 6.
+
+This is the 5th contract in the Solidity tutorial.
+
+https://www.youtube.com/watch?v=ipwxYa-F1uY&t=44s
+
+This is where I'll write notes and at the end of the tutorial, I'll
+explain the code line by line and explain what it's doing.
+
+//------------------------------------------------------------------
+
+Part 6.
+
+We're going to go over two topics in this tutorial.
+
+How to use both Math and Libraries in Solidity.
+
+1. Libraries.
+2. Math.
+
+We use libraries to manage math in Solidity frequently.
+
+A library is a way to organize code that can be used in multiple 
+places inside your project.
+
+We basically use it to DRY our code.
+
+DRY is an acronym for Don't Repeat Yourself.
+
+For example, if we have a function that we're going to use inside of
+multiple smart contracts we can create a library
+
+
+
