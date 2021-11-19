@@ -268,7 +268,12 @@ contract the function resides in, or by a child contract.
    
    
         require(b > 0)
+// Require is used for error handling, and in this case its needed to
+make sure that B is larger than zero, so we won't throw an error.
+
         uint256 c = a / b;
+
+        
         return c;  
     }
 }
