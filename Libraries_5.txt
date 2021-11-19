@@ -75,4 +75,10 @@ We don't necessarily have to have the library defined inside of the
 smart contract.
 
 What we can do is that we can define the library in another file and 
-import it inside of this 
+import it.
+
+import "./Math.sol";
+
+Use double quotes for the file name, and the '.' is used to 
+refer to the current directory.
+
