@@ -297,3 +297,23 @@ games etc.
 
 ----- Terminology -----
 
+Blockchain
+
+- The sequence of all blocks that have been comitted to the 
+Ethereum network in the history of the network.
+- So named because each block contains a reference hash to the 
+previous block, which helps us maintain an ordering over all
+blocks (and thus over the precise history.)
+
+ETH 
+
+- The native Cryptocurrency of Ethereum.
+- Users pay Ether to other users to have their code execution
+requests fulfilled.
+
+EVM
+
+- The Ethereum Virtual Machine is the global virtual computer
+whose very state every participent on the Eth network stores
+and agrees upon.
+- Any participent can 
