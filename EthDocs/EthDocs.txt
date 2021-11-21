@@ -9,6 +9,7 @@ and develop my knowlege as a developer.
 
 //--------------------------------------------------------------------
 
+https://ethereum.org/en/developers/docs/intro-to-ethereum/
 
 Intro to Ethereum.
 
@@ -31,4 +32,51 @@ blocks, which would require the consesus of the entire network.
 Every computer in the network must agree upon each new Block and the 
 chain as a whole. These computers are known as 'Nodes'. Nodes
 ensure everyone interacting with the Blockchain has the same data.
-To acomplish
+To acomplish this distributed agreement, blockchains need a consensus
+mechanism.
+
+Ethereum currently uses a proof-of-work consensus mechanism. This 
+means that anyone who wants to add new blocks to the chain must
+solve a difficult puzzle that requires alot of computing power.
+
+Solving the puzzle 'proves' that you've done the 'work' by using 
+computational resources. Doing this is known as mining. Mining is 
+typically brute force trial and error, but successfully adding A
+block is rewarded in Eth.
+
+New blocks are broadcast to the nodes in the network, checked
+and verified, thus updating the state of the blockchain for everyone.
+
+So to summarize, when you send Eth to someone, the transaction must
+be mined and included in a new block. The updated state is then shared
+with the entire network.
+
+https://www.youtube.com/watch?v=zcX7OJ-L8XQ
+
+//---------------------------
+
+SHA256 Hash
+
+A hash looks like a random string of numbers and letters, but 
+essentially what it is, is a a digital fingerprint of some digital 
+data.
+
+// I'm entering my own notes here on SHA256.
+
+SHA256 stands for Secure Hashing Algorithim. 
+
+It is used by IPFS as its main cryptographic hash algorithim, that is
+used essentially as a "fingerprint" of the data, or barcode.
+
+SHA256 is determanistic, meaning, that the data that is input into it
+it will always get the same hash everytime. 
+
+E.g. I typed in my name 'nathan' into this generator:
+
+https://passwordsgenerator.net/sha256-hash-generator/
+
+and it spit out D2653FF---------------------.
+
+Everytime I go into it, and type the same "nathan" it will always
+return the same hash D2653ff.
+
