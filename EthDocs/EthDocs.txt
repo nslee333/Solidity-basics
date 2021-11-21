@@ -355,4 +355,18 @@ with arguments y.
 
 Blocks
 
-- 
+- The volume of transactions are very hig, so transactions are 
+committed in batches or blocks.
+- Blocks generally contain dozens to hundreds of transactions.
+
+Smart Contracts
+
+- A reusable snippet of code (a program) which a developer 
+publishes into EVM memory.
+- Anyone can request that the smart contract code be executed
+by making a transaction request.
+- Because developers canwrite arbitrary executable applications
+into the EVM (Games, marketplaces, financial instruments, etc) 
+by publishing smart contracts, these are often called dApps
+or Decentralized Applications.
+
