@@ -224,4 +224,34 @@ request is broadcast, other participants on the network
 verify, validiate and carry out ("execute") the computation.
 
 This execution causes a state change in the EVM, which is 
-committed and propagated throughout 
+committed and propagated throughout the entire network.
+
+Requests for computation are called transaction requests; the 
+record for all transactions and the EVM's present state gets 
+stored on the Blockchain, which in turn is stored and aggreed 
+upon by all nodes.
+
+Cryptographic mechanisms ensure that once transactions are 
+verified as valid and added to the blockchain, they can't be
+tampered with later.
+
+The same mechanisms also ensure that all transactions are signed 
+and executed with appropriate "permissions" (No one should be able
+to send digital assets from nathan's account, except for Nathan
+himself.)
+
+The purpose of Ether, is to allow for a market for computation.
+
+Such a market provides economic incentive for participents to 
+verify and execute transaction requests and provide computational
+resources to the network.
+
+Any participant who broadcasts a transaction request must also
+offer some amount of Ether to the network as a bounty.
+
+This bounty will be awarded to whoever eventually does the work
+of verifying the transaction, executing it, and commiting it to 
+the blockchain, and broadcasting it to the network.
+
+The amount of Ether paid corresponds to the time required to do 
+the computation.
