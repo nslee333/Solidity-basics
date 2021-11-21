@@ -55,11 +55,15 @@ https://www.youtube.com/watch?v=zcX7OJ-L8XQ
 
 //---------------------------
 
+https://www.youtube.com/watch?v=_160oMzblY8&t=30s
+
 SHA256 Hash
 
 A hash looks like a random string of numbers and letters, but 
 essentially what it is, is a a digital fingerprint of some digital 
 data.
+
+// Entering Personal Note.
 
 // I'm entering my own notes here on SHA256.
 
@@ -79,4 +83,81 @@ and it spit out D2653FF---------------------.
 
 Everytime I go into it, and type the same "nathan" it will always
 return the same hash D2653ff.
+
+// Exit Personal Note.
+
+So we've explained how a SHA256 Hash works.
+
+When we use the SHA, we have an input and an output, the data and the
+hash.
+
+A block expands the data to three sections:
+
+1. The Block Number.
+2. The Nonce.
+3. The Data itself.
+
+The Hash includes all of the above data, and it begins with four zeros.
+
+0000xxxxxxxxxxxx
+
+We can gather from this information, is that the four zeros stand for
+a 'signed' or valid block.
+
+Whenever we have an "unsigned" block it dosen't have the four zeros.
+
+This is where a nonce comes in.
+
+// Begin personal note:
+
+In the video I'm following, he dosen't explain the concept of a nonce
+well, so I found another video that explains it fairly well.
+
+https://www.youtube.com/watch?v=EOgpr73-pgc
+
+Notes for the video:
+
+- The easiest way to explain a Nonce in cyptography is a 
+CAPTCHA. 
+
+(CAPTCHA stands for Completely Automated Public Turing Test to tell
+Computers and Humans apart, is a type of challenge-response Test used
+in computing to determine whether or not the user is human.)
+
+- A nonce is a randomized set of digits (Typically numbers) that is 
+used to verify the data that has been submitted, has only been 
+submitted once.
+
+- Let's say for example, theres a thing called a replay attack,
+a replay attack is when, lets say you're submitting
+Identity verification (authentication), like username and password.
+
+In a replay attack is when a third party finds and records
+your id and password, and then uses it to gain access to your account
+later for what ever purpose, this is a replay attack.
+
+This is why we have CAPTCHA, we use this to stop these type of attacks.
+
+A nonce in Cryptography is an authentication tool that makes sure
+that a block that has been submitted into a blockchain for example
+has only been submitted once.
+
+In summary, a Nonce (in Cyptography) is something that is created, 
+randomized that exists only once, and is used for a specific 
+purpose.
+
+// End of personal note.
+
+So the Blockchain basically is a block is connected to its
+previous block via the privious blocks Hash, and!
+
+The previous Hash is included in the data that goes through the 
+hash algorithim, meaning that it is linked.
+
+If you modify any part of the chain then all the hashes following 
+it change, and since the one block also contains the pervious hash 
+in the data that runs through the algorithim for the current block
+the hash for that block changes as well.
+
+This SHA helps us make this Blockchain immutable.
 
