@@ -240,6 +240,8 @@ and executed with appropriate "permissions" (No one should be able
 to send digital assets from nathan's account, except for Nathan
 himself.)
 
+--- What is Ether? ---
+
 The purpose of Ether, is to allow for a market for computation.
 
 Such a market provides economic incentive for participents to 
@@ -254,4 +256,44 @@ of verifying the transaction, executing it, and commiting it to
 the blockchain, and broadcasting it to the network.
 
 The amount of Ether paid corresponds to the time required to do 
-the computation.
+the computation.These bounties also prevent malicious 
+participents from intentionally clogging the network
+by requesting the execution of infinite computation or other
+resource-intensive scripts such as these participents must
+pay for the computation time.
+
+--- What are Smart Contracts? ---
+
+In practice, participants don't write new code everytime they want 
+to request computation on the EVM.
+
+Rather application developers upload programs (Reusable snippets
+of code) into EVM storage, and users make requests to execute
+these code snippets with varying parameters. 
+
+We call these programs uploaded to and executed by the network
+smart contracts.
+
+At a very basic level, you can think of a smart contract like 
+a sort of vending machine: a script that when called with 
+certian parameters, performs some actions or computation if 
+certian conditions are satisfied.
+
+For example, a simple vendor smart contract could create 
+and assign ownership of a digital asset if the caller sends 
+Ether to a specific recipient.
+
+Any developer can create a smart contract and make it public 
+to the network, using the blockchain as its data layer,
+for a fee paid to the network.
+
+Any user can then call the smart contract, execute the code,
+again for a fee paid for the network.
+
+Thus with Smart Contracts, developers can build and 
+deploy arbitrarily complex user-facing applications
+and services such as marketplaces, financial instraments,
+games etc.
+
+----- Terminology -----
+
