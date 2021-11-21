@@ -316,4 +316,43 @@ EVM
 - The Ethereum Virtual Machine is the global virtual computer
 whose very state every participent on the Eth network stores
 and agrees upon.
-- Any participent can 
+- Any participent can request the execution of arbitrary code
+on the EVM; code execution changes the state of the EVM.
+
+Nodes
+
+- Nodes are the real life machines which are storing the EVM state.
+- Nodes communicate with each other to propagate information 
+about the EVM state and new state changes.
+- Any user can also request the execution of code by broadcasting 
+a code execution request from a node.
+- The Ethereum network itself is the aggregate of all Ethereum
+nodes and their communications.
+
+Accounts
+
+- Accounts is where Ether is stored. 
+- Users can initialize accounts, deposit ether into the accounts, 
+and transfer ether from their accounts to other users.
+- Accounts and account balances are stored in a big table in the EVM.
+- They are a part of the overall EVM state.
+
+Transactions 
+
+- A "Transaction request" is the formal term for a request for code 
+execution on the EVM, and a "Transaction" is a fulfilled trnascation
+request to affect the aggred-upon EVM state, it must be validiated,
+executed and "Committed to the network" by another node.
+- Execution of any code causes a state change in the EVM; upon
+commitment, this state change is broadcast to all nodes in the network.
+
+Some examples of transactions:
+
+- Send X ether from my account to Frank's account.
+- Public some smart contract code into EVM memory.
+- Execute the code of the smart contract at address X in the EVM,
+with arguments y.
+
+Blocks
+
+- 
