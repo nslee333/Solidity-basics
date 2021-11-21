@@ -30,4 +30,5 @@ blocks, which would require the consesus of the entire network.
 
 Every computer in the network must agree upon each new Block and the 
 chain as a whole. These computers are known as 'Nodes'. Nodes
-ensure everyone interacting with the Blockchain
+ensure everyone interacting with the Blockchain has the same data.
+To acomplish
