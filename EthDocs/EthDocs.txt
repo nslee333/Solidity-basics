@@ -161,3 +161,67 @@ the hash for that block changes as well.
 
 This SHA helps us make this Blockchain immutable.
 
+So another note: So when a Block is changed in some way, the 
+block becomes unverified (or unsigned) and the hash looses its
+"0000" status, which means that you have to remine (or reverify) 
+the transactions in that Block.
+
+Due to the linking nature of the Blockchain, all the suceeding
+blocks become unverified, meaning that all the blocks have to be
+remined from the "break" in the chain.
+
+//------
+
+Distributed Blockchains.
+
+So with a distrubuted Blockchains you have a multiple peers
+on the network, that have a precise copy of the Blockchain.
+
+These "peers" can be anyone with a computer.
+
+So how do I know that one chain hasn't just modified the chain,
+and remined all the blocks (giving it the 0000 signature)?
+
+Well, When you have multiple peers using the exact same
+blockchain, they should all have the exact same hash at the 
+current block that they are on.
+
+You can compare all of the Hashes, and when you see a peer 
+with a different hash at the end, then you know that 
+something went wrong / is fishy (lol).
+
+// Adding tokens to the mix.
+
+When you add transactions of tokens between people, and you add that 
+to the way the Hashing algorithm works, and with multiple peers
+working on verifiying and adding Blocks, the Blockchain becomes 
+immutable.
+
+
+// ----
+
+Coinbase transaction
+
+Coinbase stands for a person's balance or the base of his coins.
+
+Basically in this, we're going back and verifying that "Nathan"
+has 100 dollars and when he sends tokens to the person, that he
+has those coins in the first place.
+
+// ---------
+
+Continuing with the Ethereum Documentation.
+
+In the Ethereum universe, there is a single canonical computer
+called the Ethereum Virtual Machine. (or the EVM). whose state
+everyone on the Ethereum network agrees on. Everyone who
+participates in the Ethereum network (every Ethereum node) keeps
+a copy of the state of the computer.
+
+Additionally, any participant can broadcast a request for this 
+computer to perform arbitrary computation. Whenever such a 
+request is broadcast, other participants on the network
+verify, validiate and carry out ("execute") the computation.
+
+This execution causes a state change in the EVM, which is 
+committed and propagated throughout 
