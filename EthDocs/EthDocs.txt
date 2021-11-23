@@ -370,3 +370,56 @@ into the EVM (Games, marketplaces, financial instruments, etc)
 by publishing smart contracts, these are often called dApps
 or Decentralized Applications.
 
+End of Intro to Ethereum.
+
+//-----------------------------------------------------------------
+
+Intro to Ether.
+
+A cryptocurrency is a medium of exchange secured by a Blockchain based ledger.
+
+A medium of exchange is anything widely accepted as paymet for 
+goods and services, and a ledger is a data store that keeps
+track of transactions.
+
+Blockchain tech allows users to make transactions on the ledger
+without the reliance upon a trusted third party to maintain the 
+ledger.
+
+Ether is the currency used for many things on the Eth network. 
+Fundamentally, it is the only acceptable form of payment for
+transaction fees, and after the mege is also required in ordering
+to validate and propose blocks on the Mainnet. 
+Ether is also used as a primary form of colateral in the DeFi
+lending markets, it is also used as a unit of account in NFT
+marketplaces, as payment earned for performing services or selling
+real-world goods, and more.
+
+Ethereum allows developers to create dApps, which all share a pool
+of computing power. This shared pool is finite, so Ethereum
+needs a mechanism to determine who gets to use it. Otherwise 
+a Dapp could accidentally or maliciously consume all network 
+resources, which would block others from accessing it.
+
+Ether supports a pricing mechansim for Ethereum's computing power. 
+When users want to make a transaction, they must pay Ether to have
+their transaction recognized on the Blockchain. These usage costs 
+are called Gas fees, and the gas fee depends on the amount of computing 
+power required to execute the transaction and the network wide 
+demand for computing power at the time.
+
+Therefore even if a malicious app submitted an Infinite loop, the
+transaction would run out of Ether and terminate, allowing the 
+network to return to normal.
+
+Minting Ether ---
+
+Minting is the process in which new ether gets created on the Ethereum
+ledger. The underlying Ethereum protocol creates new Ether, and it is not
+possible for a user to create Ether.
+
+Ether is minted with a miner creates a new block on the Ethereum blockchain.
+As an incentive to miners, the protocol grants a reward to each block,
+incrementing the balance of an address set by the block's miner. 
+The block reward has changed over time, and today it is 2 Ether per block.
+
