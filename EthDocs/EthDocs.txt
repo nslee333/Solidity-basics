@@ -571,4 +571,8 @@ will not misuse our finanaical data, tamper with records or get hacked.
  server before writing to the blockchain. Centralization eliminates any
  (if not all) of the advantages of Blockchain over the traditional model.
 
--- Dapp Tools
+-- Dapp Tools --
+
+- Scaffold Eth: Quickly experiment with Solidity using a frontend that 
+adapts to your smart contract.
+
