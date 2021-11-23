@@ -571,8 +571,43 @@ will not misuse our finanaical data, tamper with records or get hacked.
  server before writing to the blockchain. Centralization eliminates any
  (if not all) of the advantages of Blockchain over the traditional model.
 
--- Dapp Tools --
+-- Web 2 vs Web3 ---
 
-- Scaffold Eth: Quickly experiment with Solidity using a frontend that 
-adapts to your smart contract.
+Web2 refers to the version of the internet most of us know today.
+An internet dominated by companies that provide services in exchange for 
+personal data. In Web3, in the context of Ethereum refers to decentralized
+applications that run on the blockchain. These are apps that allow anyone
+to participate without monetising their personal data.
+
+-- Web3 benefits --
+
+Many web3 developers have chosen to build dapps because of Ethereums
+inherent decentralization:
+
+- Anyone who is on the network has permission to use the service - or 
+in other words, the permission isn't required.
+
+- No one can block you or deny your access to the service.
+
+- Payments are built in via the native token, Eth.
+
+- Ethereum is a turing-complete, meaning you can pretty much program
+everything.
+
+Practical comparisions.
+
+Web2 
+- Twitter can sensor any account or tweet.
+- Payment service may decide to not allow payments for certian types of work.
+- Servers for gig-economy apps could go down and affect worker income.
+
+Web3 
+- Web3 tweets would be uncensorable because control is decentralized.
+- Web3 payment apps require no personal data and can't prevent payments.
+- Web3 servers can't go down - they use Ethereum, a decentralized network
+of computers as their backend.
+
+This dosen't mean that all services need to be turned into a dapp.
+These examples are illustrative of the main difference between web2 and 
+web3 services.
 
