@@ -814,5 +814,29 @@ the account.
 
 
 
+----------- Transactions ---------------
+
+Transactions are cryptographically signed instructions from accounts. 
+
+An account will initiate a transaction to upgrade the state of the Ethereum 
+network. The simplest transaction is transferring Eth from one account to another.
+
+--- What is a transaction? ---
+
+An Ethereum transaction refers to an action initiated by an external owned account.
+In other words, an account managed by a human, not a contract. For example.
+If bob sends alice 1 Eth, Bob's account must be debited and Alice's must be credited.
+This state-changing action takes place within a transaction.
+
+World state (t) ------ (transaction)-----> world state (t+1)
+
+Transactions, which change the sate of the EVM, need to be broadcast to the whole network.
+Any node can broadcast a request for a transaction to be executed on the EVm;
+
+After this happens, a miner will execute the transaction and propagate the resulting 
+state change to the network.
+
+
+
 
 
