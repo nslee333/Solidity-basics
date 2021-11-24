@@ -677,3 +677,65 @@ when there are disagreements about protocol changes.
 - Anyone can participate in the network; there are no 'gatekeepers' ideally, the cost of 
 participation is very low.
 
+Note that these are general patterns that may not hold true in every network. 
+Furthermore, in reality the degree to which a network is centralized / decentralized lies 
+on a spectrum; no network is fully centralized or fully decentralized.
+
+--------- Ethereum Accounts --------------
+
+An ethereum account is an entity with an ether balance (ETH) balance that can send transactions
+on Ethereum. Accounts can be user controlled or deployed as contracts.
+
+Account types:
+
+Ethereum has two account types:
+
+- Externally owned - controled by anyone with the private keys.
+- Contract - a smart contract deployed to the network, controlled by code.
+
+Both account types have the ability to:
+- Recieve, hold and send Eth and tokes.
+- Interact with deployed smart contracts.
+
+--- Key differences ------
+
+- Externally owned.
+
+    - Creating an account costs nothing.
+    - Can initiate transactions.
+    - Transactions between externally owned accounts can only be Eth/Token transfers.
+
+- Contract.
+    - Creating a contract has a cost because you're using network storage.
+    - Can only send transactions in response to recieving a transaction.
+    - Transactions from an external account can trigger code which can
+    execute many different actions, such as transfering tokens or even Creating
+    a new contract.
+
+An Account Examined --------
+
+Ethereum accounts have four fields:
+
+- Nonce - a counter that indicates the number of transactions sent from the account.
+This ensures transactions are only processed once. In a contract account, this 
+number represnets the number of contracts created by the account.
+
+- Balance - the number of Wei owned by this address. Wei is a denomination of Eth 
+and there are 1e+18 wei per Eth.
+
+- codeHash - this hash refers to the code of an account on the Ethereum Virtual Machine.
+Contract accounts have code fragments programmed in that can perform different operations.
+This EVM code gets executed if the account gets a message call. It cannot be changed unlike
+other account fields. All such code fragments are contained in the state database under their
+corresponding Hashes for later retrieval. This has value is known as a codeHash. For externally
+owned accounts, the codeHash field is the hash of an empty string.
+
+- Storage root - Sometimes known as a storageHash. A 256-bit hash of the root node of a merkle
+patricia trie that encodes the storage contents of the account (a mapping between 256 bit integer
+values), encoded into the trie as a mapping from the Keccak 256 bit hash of the 256-bit integer
+keys to the RLP-encoded 256 bit integer values. This trie encodes the hash of storage contents of 
+this account, and is empty by default.
+
+See this image:
+https://ethereum.org/static/19443ab40f108c985fb95b07bac29bcb/302a4/accounts.png
+
