@@ -739,3 +739,80 @@ this account, and is empty by default.
 See this image:
 https://ethereum.org/static/19443ab40f108c985fb95b07bac29bcb/302a4/accounts.png
 
+------- Externally-owned accounts and key pairs -------
+
+An account is made up of a cryptographic pair of keys: public an private. 
+They help prove that a transaction was actually signed by the sender and 
+prevent forgeries. Your private key is what you use to sign a transaction 
+was actually signed by the sender and prevent forgeries. Your private key 
+is what you use to sign transactions, so it grants your custody over the funds
+accociated with your account. You never really hold cryptocurrency, you
+hold private keys - the funds are always on the Ethereum ledger.
+
+This prevents malicious actors from broadcasting fake transactions because you
+can always verify the sender of a transaction.
+
+If alice wants to send Ether from her own account to Bob's account, alice
+needs to create a transaction request and send it out to the network for 
+verification. Ethereum's usage of public-key cryptography ensures that alice
+can prove that she originally initiated the transaction request. without
+cryptographic mecahnisms, a malicious adversary Eve could simply
+publically broadcast that basically looks something line "Send Ether from
+alice's account to Eve's account" and noone would be able to verify that 
+it didn't come from Alice.
+
+Account Creation ------
+
+When you first create an account most libraries will generate you a random private key.
+
+A private key is made up of 64 Hex characters and can be encrypted using a password.
+
+Example: fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd036415f.
+
+The public key is generated from the private key using the 
+"Elliptic Curve Digital Signature Algorithm." You get a public address for your account
+by taking the last 20 bytes of the Kaccak-256 hash of the public key and adding 0x to the
+beginning.
+
+Here's an example of creating an account in the console using GETH's personal_newAccount.
+
+> personal.newAccount()
+Passphrase:
+Repeat Passphrase:
+"0x5e97870f263700f46aa00d967821199b9bc5a120"
+
+> personal.newAccount("H4ck3r")
+"0x3d80b31a78c30fc628f20b2c89d7ddbf6e53cedc"
+
+It is possible to derive new public keys from your private key but you cannot
+derive a private key from public keys. This means that it is vital to keep 
+a priavate key safe and as the name suggests, private.
+
+You need a private key to sign messages and transactions which output a signature.
+Others can then take the signature to derive your public key, proving
+the author of the message. In your application, you can use a JS library to 
+send transactions to the network.
+
+----- Contract Accounts --------
+
+
+Contract accounts can also have a 42 character hexadecimal address:
+
+Example:
+
+0x06012c8cf97bead5deae237070f9587f8e7a266d0.
+
+The contract address usually given when a contract is deployed to the Ethereum 
+blockchain. The address comes from the creator's address and the 
+number of transactions sent from that account (the nonce).
+
+-------- A note on wallets -----------
+
+An account is not a wallet. A wallet is the keypair associated with a 
+user-owened account, which allows a user to make transactions from or manage 
+the account.
+
+
+
+
+
