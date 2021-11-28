@@ -1,10 +1,16 @@
 Recursive Length Prefix:
 	-  Serialization is the process of encoding data structures into byte sequences.
 	-  It is also referred to as marshalling and pickling. Serialization is necessary when storing and sending data structures.
-	- RLP is serialization format created by Ethereum developers for storage and communcations. It is used for all data structures such as accounts, transactions and blocks. RLP is simpler than the alternatives such as extensible markup language (XML) Javascript Object Notation (JSON), Binary JSON (BSON), protocol buffers and bencode.
+	- RLP is serialization format created by Ethereum developers for storage and communcations. It is used for all data structures such as accounts, 
+    transactions and blocks. RLP is simpler than the alternatives such as extensible markup language (XML) Javascript Object Notation (JSON), 
+    Binary JSON (BSON), protocol buffers and bencode.
 
-	- RLP is also consistent. The same inputs are always converted to the same byte sequences. This is not true of all Serialization formats. For  example, when encoding sets of key, value pairs, some schemes do not specify an ordering.
-	- RLP operates on the byte sequences and lists. Lists can contain byte sequences and other lists. The interpretation of all inputs is handled by other protocols. For byte sequences, small headers are added which depend on the length. For lists, the elements are encoded separately and concatenated. As with byte sequences, small headers are added which depend on the length. Lastly all lengths are encoded in big endian format.
+	- RLP is also consistent. The same inputs are always converted to the same byte sequences. 
+     This is not true of all Serialization formats. For  example, when encoding sets of key, value pairs, some schemes do not specify an ordering.
+	- RLP operates on the byte sequences and lists. Lists can contain byte sequences and other lists. 
+    The interpretation of all inputs is handled by other protocols. For byte sequences, 
+    small headers are added which depend on the length. For lists, the elements are encoded separately and concatenated. 
+    As with byte sequences, small headers are added which depend on the length. Lastly all lengths are encoded in big endian format.
 Here are python functions which implement RLP encoding and decoding.
 
 import math
@@ -61,7 +67,52 @@ about 18 million terabytes. Here are examples of their usage.
 RLP is an elegant and approachable serialization format used extensively by the ETC. It can be
 quickly mastered thereby illuminating this important aspect of the system.
 
+-------- Types of transactions -------
 
+On Ethereum there are a few different types of transactions:
+
+- Regular transactions: a transaction from one wallet to another.
+
+- Contract deployment transactions: A transaction without a 'to' address, where the data field is used for the contract code.
+
+---- On Gas ------
+
+As mentioned, transactions cost gas to execute. Simple transfer transactions require 21,000 units of gas.
+
+So for Bob to send Alice 1 Eth at a baseFeePerGas of 190 gwei and maxPriorityFeePerGas of 10 gwei, bob will need to pay the following fee.
+
+(190 + 10) * 21,000 = 4,200,000 gwei.
+
+-- or --
+
+0.0042 Eth.
+
+Bob's account will be debited - 1.0042 Eth.
+
+Alice's account will be credited + 1.0 Eth.
+
+The base fee will be burned - 0.00399 eth.
+
+Miner keeps the tip +0.000210 Eth.
+
+Gas is required for any smart contract interaction too.
+
+Any gas that is not used is refunded to the user.
+
+------- Transaction lifecycle --------
+
+Once the transaction is submitted the folloing happens:
+
+1. Once you send a transaction, cryptography generates a transaction hash:
+    0x97d99bc7729211111a21b12c933c949d4f31684f1d6954ff477d0477538ff017
+2. The transaction is then broadcast to the network and included in a pool with lots of other transactions.
+3. A miner must pick your transaction and include it in a block in order to verify the transaction and consider it "sucessful".
+    - You may end up waiting at this stage if the network is busy and the miners aren't able to keep up.
+4. Your transaction will recieve "confirmations". The number of confirmations is the number of blocks created since the
+block that included your transaction. The higher the number, the greater the certianty that the network has processed and recognized the transaction.
+    - Recent blocks may get reorganized, giving the impression that the transaction was unsucessful; however the transaction may still be valid
+    but included in a different block.
+    - The probaility of re-organization deminishes with every subsequent block mined. i.e. the greater the number of transactions the more immutable the transaction is.
 
 
 
