@@ -863,7 +863,7 @@ of gas represent computational steps.
 Users have to pay a fee for this computation. The gasLimit and maxPriorityFeePerGas 
 determine the maximum transaction fee paid to the miner.
 
-The transaction obnject will look like this:
+The transaction object will look like this:
 
 {
     from: "hash id here",
@@ -925,6 +925,17 @@ Example Resoponse:
 
 - The raw is the signed transaction in Recursive Length Prefix (RLP) encoded form.
 - The tx is the signed JSON form.
+
+Personal note: We're going on a quick side quest with learning about Recursive Length Prefix.
+
+Recursive Length Prefix:
+
+ Serialization is the process of encoding data structures into byte sequences.
+
+ It is also
+
+
+
 
 With the signature hash, the transaction can be cryptographically proven that it came from
 the sender and submitted to the network.
