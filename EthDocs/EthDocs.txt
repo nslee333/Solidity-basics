@@ -942,5 +942,127 @@ the sender and submitted to the network.
 
 -------- Types of transactions -----
 
+On Ethereum there are a few different types of transactions:
+
+- Regular transactions: a transaction from one wallet to another.
+
+- Contract deployment transactions: A transaction without a 'to' address, where the data field is used for the contract code.
+
+---- On Gas ------
+
+As mentioned, transactions cost gas to execute. Simple transfer transactions require 21,000 units of gas.
+
+So for Bob to send Alice 1 Eth at a baseFeePerGas of 190 gwei and maxPriorityFeePerGas of 10 gwei, bob will need to pay the following fee.
+
+(190 + 10) * 21,000 = 4,200,000 gwei.
+
+-- or --
+
+0.0042 Eth.
+
+Bob's account will be debited - 1.0042 Eth.
+
+Alice's account will be credited + 1.0 Eth.
+
+The base fee will be burned - 0.00399 eth.
+
+Miner keeps the tip +0.000210 Eth.
+
+Gas is required for any smart contract interaction too.
+
+Any gas that is not used is refunded to the user.
+
+------- Transaction lifecycle --------
+
+Once the transaction is submitted the folloing happens:
+
+1. Once you send a transaction, cryptography generates a transaction hash:
+    0x97d99bc7729211111a21b12c933c949d4f31684f1d6954ff477d0477538ff017
+2. The transaction is then broadcast to the network and included in a pool with lots of other transactions.
+3. A miner must pick your transaction and include it in a block in order to verify the transaction and consider it "sucessful".
+    - You may end up waiting at this stage if the network is busy and the miners aren't able to keep up.
+4. Your transaction will recieve "confirmations". The number of confirmations is the number of blocks created since the
+block that included your transaction. The higher the number, the greater the certianty that the network has processed and recognized the transaction.
+    - Recent blocks may get reorganized, giving the impression that the transaction was unsucessful; however the transaction may still be valid
+    but included in a different block.
+    - The probaility of re-organization deminishes with every subsequent block mined. i.e. the greater the number of transactions the more immutable the transaction is.
+
+------- Typed Transaction Envelope -------
+
+Ethereum originally only had one format for transactions. Each transaction only 
+contained:
+    - A nonce. 
+    - gas price.
+    - Gas limit.
+    - To address.
+    - Value.
+    - Data.
+    - V.
+    - R.
+    - S.
+    These fields are RLP-encoded, to look something like this:
+
+    RLP([nonce, gasPrice, gasLimit, to, value, data, v, r, s,])
+
+Ethereum has evolved to support multiple types of transactions to allow for new features such as access lists and EIP-1559 to be
+implemented without affecting legacy transaction formats.
+
+EIP-2718 is a new generalized envelope for typed transactions. In the new standard, transactions are interpreted as:
+
+TransactionType || TransactionPayload
+
+Where the fields are described as:
+
+- TransactionType - a number between 0 and 0x7f, for a total of 128 possible transaction types.
+- Transaction payload - An arbitrary byte array defined by the transaction type.
+
+------- Blocks -------
+
+- Blocks are batches of transactions with a hash of the previous block of the chain. This links blocks together (in a chain)
+    because hashes are cryptographically derived from the block data. This prevents fraud, because one change in any block history
+    Would invalidate all the following blocks as all subsequent hashes would change and everyone running the blockchain would notice.
+
+----- Why Blocks ------
+
+To ensure all of the participants on the E network maintain a synchronized state and agree on the precise history of transactions
+we batch transactions into blocks. This means doezens (or hundreds) of transactions are commited, aggreed on, and synchronized at once.
+
+What's in a block?
+
+- Timestamp - the time when the block was mined.
+- blockNumber - the length of the blockchain in blocks.
+- baseFeePerGas - the minimum fee per gas required for a transaction to be included in the block.
+- Difficulty - the effort required to mine a new block.
+- mixHash - a unique identifier for that block.
+- parentHash - the unique identifier for the block that came before (this is how the blocks are linked in a chain).
+- Transactions - the transactions included in the block.
+- stateRoot - the entire state of the system: account balances, contract storage, contract code and account nonces are inside.
+- nonce - a hash that when combined with mixHash, proves that the block has gone through proof of work.
+
+Block Time ------
+
+Block time refers to the time it takes to mine a new block. In Ethereum the average is 12-14 seconds and is evaluated 
+after each block. The expected block time is set as a constant at the protocol level and is used to protect the network's security
+when the miners add more computational power.
+
+The average block time is compared with the actual block time, if the average block time is higher, then the difficulty is decreaced 
+in the block header. If the average block time is slower, the difficulty will be increased.
+
+---- Block size ----
+
+A final important note is that the blocks themselves are bounded in size. 
+
+Each block has a target of 15,000,000 Gas, but 
+
+will increase or decrease in accordance with network demands up until a limit of 30,000,000 Gas is reached.
+The total amount of gas expended by all transactions in the block must be less than the block gas limit.
+
+This is important because the blocks cant be arbitrarily large. If the blocks could be arbitrarily large, then the less
+performant full nodes would gradually stop being able to keep up with the network because of the speed and space requirements.
+
+---- EVM ----
+
+
+
 
 
